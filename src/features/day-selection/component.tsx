@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, ImageBackground} from 'react-native';
+import {View} from 'react-native';
 import DayItem from './day-item';
 import styles from './styles';
 import RainyWrapper from 'src/shared/components/rainy-wrapper';
