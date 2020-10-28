@@ -23,12 +23,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   temperature: {
-    fontSize: 60,
-    lineHeight: 70,
-  },
-  temperatureSuperScript: {
-    fontSize: 30,
-    lineHeight: 30,
+    transform: [{translateY: -10}],
   },
   cityName: {
     fontSize: 25,

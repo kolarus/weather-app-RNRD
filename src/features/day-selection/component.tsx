@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import DayItem from './day-item';
 import styles from './styles';
 import RainyWrapper from 'src/shared/components/rainy-wrapper';
@@ -7,17 +7,16 @@ import {daysMock} from './mock';
 
 const DaySelection: React.FC = () => {
   return (
-    <RainyWrapper>
-      <View style={styles.daysWrapper}>
-        {daysMock.map((day) => (
+    <RainyWrapper style={styles.root}>
+      {daysMock.map((day) => (
+        <TouchableOpacity key={day.label}>
           <DayItem
-            key={day.label}
             dayLabel={day.label}
             icon={day.icon}
             temperatureRange={day.temperatureRange}
           />
-        ))}
-      </View>
+        </TouchableOpacity>
+      ))}
     </RainyWrapper>
   );
 };
