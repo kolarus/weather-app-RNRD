@@ -49,10 +49,6 @@ const styles = StyleSheet.create({
     flex: 3,
     flexDirection: 'column',
   },
-  temperatureColumn: {
-    flex: 3,
-    flexDirection: 'row',
-  },
   sunsetColumn: {
     flex: 1,
     justifyContent: 'flex-end',
@@ -60,10 +56,6 @@ const styles = StyleSheet.create({
   },
   temperature: {
     fontFamily: 'PTSansNarrow',
-  },
-  temperatureSuperScript: {
-    fontSize: 30,
-    lineHeight: 30,
   },
   temperatureDescription: {
     fontFamily: 'PTSansNarrow',

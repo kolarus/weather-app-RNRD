@@ -9,11 +9,12 @@ interface Props {
   time: string;
   icon: string;
   temperature: string;
+  isSelected?: boolean;
 }
 
 const WeatherByTime: React.FC<Props> = (props) => {
   return (
-    <View style={styles.root}>
+    <View style={[styles.root, props.isSelected && styles.root__selected]}>
       <CommonText style={styles.time}>{props.time}</CommonText>
       <Feather style={styles.icon} name={props.icon} size={30} color="white" />
       <TextWithSuperscript fontSize={25} superScript="o">

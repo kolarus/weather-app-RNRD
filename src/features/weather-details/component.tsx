@@ -8,6 +8,8 @@ import WeatherByTime from './weather-by-time';
 import WeatherDataItem from './weather-data-item';
 import styles from './styles';
 
+import {weatherByTime} from './mock';
+
 const WeatherDetails: React.FC = () => {
   return (
     <RainyWrapper style={styles.root}>
@@ -40,10 +42,6 @@ const WeatherDetails: React.FC = () => {
             superScript="o">
             -2
           </TextWithSuperscript>
-          {/*<View style={styles.temperatureColumn}>
-            <CommonText style={styles.temperature}>-2</CommonText>
-            <CommonText style={styles.temperatureSuperScript}>o</CommonText>
-          </View>*/}
           <CommonText style={styles.temperatureDescription}>
             // mostly cloudy
           </CommonText>
@@ -55,10 +53,15 @@ const WeatherDetails: React.FC = () => {
       </View>
       <View style={styles.weatherByTimeRow}>
         <ScrollView horizontal>
-          <WeatherByTime icon="cloud" time="6:00" temperature="-2" />
-          <WeatherByTime icon="cloud" time="6:00" temperature="-2" />
-          <WeatherByTime icon="cloud" time="6:00" temperature="-2" />
-          <WeatherByTime icon="cloud" time="6:00" temperature="-2" />
+          {weatherByTime.map((weather) => (
+            <WeatherByTime
+              key={weather.time}
+              isSelected={weather.isSelected}
+              icon={weather.icon}
+              time={weather.time}
+              temperature={weather.temperature}
+            />
+          ))}
         </ScrollView>
       </View>
       <View style={styles.specificWeatherDataRow}>
