@@ -15,12 +15,7 @@ const WeatherDetails: React.FC = () => {
     <RainyWrapper style={styles.root}>
       <View style={styles.timeRow}>
         <CommonText style={styles.updateTime}>10:19</CommonText>
-        <Feather
-          style={styles.updateIcon}
-          name="refresh-cw"
-          size={20}
-          color="white"
-        />
+        <Feather style={styles.updateIcon} name="refresh-cw" size={20} color="white" />
       </View>
       <View>
         <CommonText style={styles.cityName}>kharkiv</CommonText>
@@ -28,23 +23,13 @@ const WeatherDetails: React.FC = () => {
       </View>
       <View style={styles.generalWeatherDataRow}>
         <View style={styles.iconColumn}>
-          <Feather
-            style={styles.updateIcon}
-            name="cloud-snow"
-            size={80}
-            color="white"
-          />
+          <Feather style={styles.updateIcon} name="cloud-snow" size={80} color="white" />
         </View>
         <View style={styles.temperatureDataColumn}>
-          <TextWithSuperscript
-            textStyle={styles.temperature}
-            fontSize={60}
-            superScript="o">
+          <TextWithSuperscript textStyle={styles.temperature} fontSize={60} superScript="o">
             -2
           </TextWithSuperscript>
-          <CommonText style={styles.temperatureDescription}>
-            // mostly cloudy
-          </CommonText>
+          <CommonText style={styles.temperatureDescription}>// mostly cloudy</CommonText>
         </View>
         <View style={styles.sunsetColumn}>
           <Feather name="moon" size={30} color="white" />

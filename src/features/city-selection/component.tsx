@@ -1,12 +1,17 @@
 import React from 'react';
 import {TextInput, View, TouchableOpacity, ScrollView} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
+import {useNavigation} from '@react-navigation/native';
+import NAVIGATION_ROUTES from 'src/shared/constants/navigation-routes';
 import CityItem from './city-item';
 import styles from './styles';
 
 import {cityItems} from './mock';
 
 const CitySelection: React.FC = () => {
+  const navigation = useNavigation();
+  const handleCityItemPress = () => navigation.navigate(NAVIGATION_ROUTES.WEATHER_DETAILS);
+
   return (
     <View style={styles.root}>
       <View style={styles.search}>
@@ -19,7 +24,7 @@ const CitySelection: React.FC = () => {
       </View>
       <ScrollView style={styles.cityOptions}>
         {cityItems.map((city) => (
-          <TouchableOpacity key={city.name}>
+          <TouchableOpacity key={city.name} onPress={handleCityItemPress}>
             <CityItem
               name={city.name}
               letter={city.letter}

@@ -10,11 +10,7 @@ const DaySelection: React.FC = () => {
     <RainyWrapper style={styles.root}>
       {daysMock.map((day) => (
         <TouchableOpacity key={day.label}>
-          <DayItem
-            dayLabel={day.label}
-            icon={day.icon}
-            temperatureRange={day.temperatureRange}
-          />
+          <DayItem dayLabel={day.label} icon={day.icon} temperatureRange={day.temperatureRange} />
         </TouchableOpacity>
       ))}
     </RainyWrapper>

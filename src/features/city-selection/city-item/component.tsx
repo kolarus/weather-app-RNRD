@@ -16,10 +16,7 @@ const CityItem: React.FC<Props> = (props) => {
     <View style={styles.root}>
       <View style={styles.leftColumn}>
         <CommonText style={styles.indexLetter}>{props.letter}</CommonText>
-        <TextWithSuperscript
-          style={styles.temperature}
-          fontSize={60}
-          superScript="o">
+        <TextWithSuperscript style={styles.temperature} fontSize={60} superScript="o">
           {props.temperature}
         </TextWithSuperscript>
       </View>
