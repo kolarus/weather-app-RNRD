@@ -9,6 +9,7 @@ import {HEADER_NAVIGATION_HIDDEN, TAB_NAVIGATION_OPTIONS} from './constants';
 import timeout from 'src/shared/utils/timeout';
 import DaySelection from 'src/features/day-selection';
 import WeatherStackScreen from '../navigation/weather-stack-screen';
+import {getWeatherOptions} from './utils';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -33,7 +34,7 @@ const App: React.FC = () => {
         {isAuthorized ? (
           <Tab.Navigator tabBarOptions={TAB_NAVIGATION_OPTIONS}>
             <Tab.Screen
-              options={{title: 'WEATHER'}}
+              options={getWeatherOptions}
               name={NAVIGATION_ROUTES.WEATHER_STACK}
               component={WeatherStackScreen}
             />
