@@ -1,8 +1,8 @@
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
+import {useNavigation} from '@react-navigation/core';
 import Feather from 'react-native-vector-icons/Feather';
 import NAVIGATION_ROUTES from 'src/shared/constants/navigation-routes';
-import {useNavigation} from '@react-navigation/core';
 
 import styles from './styles';
 

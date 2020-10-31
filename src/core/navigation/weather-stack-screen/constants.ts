@@ -1,7 +1,7 @@
-import COLORS from 'src/shared/constants/colors';
-import {StackNavigationOptions} from '@react-navigation/stack';
 import React from 'react';
+import {StackNavigationOptions} from '@react-navigation/stack';
 import Feather from 'react-native-vector-icons/Feather';
+import COLORS from 'src/shared/constants/colors';
 
 import NavigateToCitySelection from './navigate-to-city-selection';
 import NavigateToSettings from './navigate-to-settings';

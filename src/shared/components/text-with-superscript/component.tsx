@@ -8,6 +8,7 @@ import {
   SUPER_SCRIPT_POSITION,
 } from './constants';
 import styles from './styles';
+import SuperScript from './super-script';
 
 interface Props {
   fontSize: number;
@@ -25,31 +26,23 @@ const TextWithSuperscript: React.FC<Props> = (props) => {
   return (
     <View style={[styles.root, props.style]}>
       {superScriptPosition === SUPER_SCRIPT_POSITION.PRE && (
-        <CommonText
-          style={[
-            {
-              fontSize: superScriptFontSize,
-              lineHeight: superScriptLineHeight,
-            },
-            props.textStyle,
-          ]}>
-          {props.superScript}
-        </CommonText>
+        <SuperScript
+          textStyle={props.textStyle}
+          superScript={props.superScript}
+          superScriptFontSize={superScriptFontSize}
+          superScriptLineHeight={superScriptLineHeight}
+        />
       )}
       <CommonText style={[props.textStyle, {fontSize: props.fontSize}]}>
         {props.children}
       </CommonText>
       {superScriptPosition === SUPER_SCRIPT_POSITION.POST && (
-        <CommonText
-          style={[
-            {
-              fontSize: superScriptFontSize,
-              lineHeight: superScriptLineHeight,
-            },
-            props.textStyle,
-          ]}>
-          {props.superScript}
-        </CommonText>
+        <SuperScript
+          textStyle={props.textStyle}
+          superScript={props.superScript}
+          superScriptFontSize={superScriptFontSize}
+          superScriptLineHeight={superScriptLineHeight}
+        />
       )}
     </View>
   );
