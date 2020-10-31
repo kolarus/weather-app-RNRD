@@ -1,5 +1,5 @@
-import React, {useState, useContext} from 'react';
-import {View, TextInput, TouchableOpacity, Keyboard} from 'react-native';
+import React, {useState, useRef, useContext} from 'react';
+import {View, Animated, Easing, TextInput, TouchableOpacity, Keyboard} from 'react-native';
 import CommonText from 'src/shared/components/common-text';
 import FullscreenLoader from 'src/shared/components/fullscreen-loader';
 import COLORS from 'src/shared/constants/colors';
@@ -12,6 +12,23 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [hasInvalidLoginAttempt, setHasInvalidLoginAttempt] = useState(false);
+  const shakeY = useRef(new Animated.Value(0)).current;
+
+  const shakeInputs = () => {
+    Animated.sequence([
+      Animated.timing(shakeY, {
+        toValue: -5,
+        duration: 100,
+        easing: Easing.linear,
+        useNativeDriver: true,
+      }),
+      Animated.spring(shakeY, {
+        toValue: 0,
+        friction: 2,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  };
 
   const handleLoginPress = async () => {
     Keyboard.dismiss();
@@ -21,13 +38,20 @@ const Login: React.FC = () => {
 
     if (!isAuthorized) {
       setIsLoading(false);
+      shakeInputs();
       setHasInvalidLoginAttempt(true);
     }
   };
 
   return (
     <View style={styles.root}>
-      <View style={styles.inputsWrapper}>
+      <Animated.View
+        style={[
+          styles.inputsWrapper,
+          {
+            transform: [{translateY: shakeY}],
+          },
+        ]}>
         <TextInput
           style={[styles.input, hasInvalidLoginAttempt && styles.input__invalid]}
           placeholder="Login"
@@ -43,12 +67,11 @@ const Login: React.FC = () => {
           value={password}
           onChangeText={setPassword}
         />
-      </View>
-
+      </Animated.View>
       <TouchableOpacity style={styles.loginButton} onPress={handleLoginPress}>
         <CommonText style={styles.loginButtonText}>LOGIN</CommonText>
       </TouchableOpacity>
-      {isLoading && <FullscreenLoader />}
+      <FullscreenLoader isLoading={isLoading} />
     </View>
   );
 };

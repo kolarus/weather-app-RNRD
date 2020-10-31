@@ -1,12 +1,17 @@
 import React, {useState} from 'react';
-import {View, TextInput} from 'react-native';
+import {TextInput, TouchableOpacity, View} from 'react-native';
 import styles from './styles';
 import COLORS from 'src/shared/constants/colors';
+import TextWithSuperscript, {
+  SUPER_SCRIPT_POSITION,
+} from 'src/shared/components/text-with-superscript';
 import SettingsSlider from './settings-slider';
+import {TEMPERATURE_SCALE} from './constants';
 
 const Settings: React.FC = () => {
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
+  const [temperatureScale, setTemperatureScale] = useState(TEMPERATURE_SCALE.CELSIUS);
   const [days, setDays] = useState(100);
   const [mins, setMins] = useState(5);
 
@@ -46,6 +51,33 @@ const Settings: React.FC = () => {
         staticLabel="update weather every">
         {mins} mins
       </SettingsSlider>
+      <View style={styles.scale}>
+        <TouchableOpacity onPress={() => setTemperatureScale(TEMPERATURE_SCALE.CELSIUS)}>
+          <TextWithSuperscript
+            textStyle={[
+              styles.scaleText,
+              temperatureScale === TEMPERATURE_SCALE.CELSIUS && styles.scaleText__selected,
+            ]}
+            fontSize={40}
+            superScript="o"
+            superScriptPosition={SUPER_SCRIPT_POSITION.PRE}>
+            C
+          </TextWithSuperscript>
+        </TouchableOpacity>
+        <View style={styles.divider} />
+        <TouchableOpacity onPress={() => setTemperatureScale(TEMPERATURE_SCALE.FAHRENHEIT)}>
+          <TextWithSuperscript
+            textStyle={[
+              styles.scaleText,
+              temperatureScale === TEMPERATURE_SCALE.FAHRENHEIT && styles.scaleText__selected,
+            ]}
+            fontSize={40}
+            superScript="o"
+            superScriptPosition={SUPER_SCRIPT_POSITION.PRE}>
+            F
+          </TextWithSuperscript>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

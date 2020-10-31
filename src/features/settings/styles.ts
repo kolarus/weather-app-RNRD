@@ -27,6 +27,28 @@ const styles = StyleSheet.create({
     paddingTop: 30,
     paddingBottom: 50,
   },
+  scale: {
+    width: '100%',
+    flexDirection: 'row',
+    marginTop: 20,
+    paddingRight: 30,
+    justifyContent: 'flex-end',
+  },
+  scaleText: {
+    fontFamily: 'PTSansNarrow',
+    opacity: 0.5,
+    color: COLORS.TEXT_DEFAULT,
+  },
+  scaleText__selected: {
+    opacity: 1,
+  },
+  divider: {
+    height: 50,
+    borderLeftWidth: 2,
+    opacity: 0.5,
+    borderLeftColor: 'gray',
+    marginHorizontal: 10,
+  },
 });
 
 export default styles;

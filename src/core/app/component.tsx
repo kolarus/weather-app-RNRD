@@ -14,12 +14,12 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const App: React.FC = () => {
-  const [isAuthorized, setIsAuthorized] = useState(true);
+  const [isAuthorized, setIsAuthorized] = useState(false);
 
   const signIn = async (login: string, password: string): Promise<boolean> => {
     const isValidCredentials: boolean = login === 'admin' && password === 'admin';
 
-    await timeout(1000);
+    await timeout(3000);
     setIsAuthorized(isValidCredentials);
 
     return isValidCredentials;
