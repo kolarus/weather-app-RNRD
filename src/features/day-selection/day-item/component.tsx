@@ -2,6 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import CommonText from 'src/shared/components/common-text';
+
 import styles from './styles';
 
 interface Props {

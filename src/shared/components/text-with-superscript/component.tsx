@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleProp, TextStyle, View, ViewStyle} from 'react-native';
+
 import CommonText from '../common-text';
 import {
   SUPER_SCRIPT_FONT_SIZE_MULTIPLIER,

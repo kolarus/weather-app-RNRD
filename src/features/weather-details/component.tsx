@@ -5,10 +5,10 @@ import Feather from 'react-native-vector-icons/Feather';
 import RainyWrapper from 'src/shared/components/rainy-wrapper';
 import CommonText from 'src/shared/components/common-text';
 import TextWithSuperscript from 'src/shared/components/text-with-superscript';
+
 import WeatherByTime from './weather-by-time';
 import WeatherDataItem from './weather-data-item';
 import styles from './styles';
-
 import {weatherByTime} from './mock';
 
 const WeatherDetails: React.FC = () => {

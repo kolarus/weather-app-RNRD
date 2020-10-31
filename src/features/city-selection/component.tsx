@@ -3,9 +3,9 @@ import {TextInput, View, TouchableOpacity, ScrollView} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import {useNavigation} from '@react-navigation/native';
 import NAVIGATION_ROUTES from 'src/shared/constants/navigation-routes';
+
 import CityItem from './city-item';
 import styles from './styles';
-
 import {cityItems} from './mock';
 
 const CitySelection: React.FC = () => {

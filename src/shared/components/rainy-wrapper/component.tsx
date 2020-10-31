@@ -1,5 +1,6 @@
 import React from 'react';
 import {ImageBackground, StyleProp, TextStyle, View} from 'react-native';
+
 import styles from './styles';
 
 interface Props {

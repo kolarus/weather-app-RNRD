@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {ActivityIndicator, Animated} from 'react-native';
 import COLORS from 'src/shared/constants/colors';
+
 import styles from './styles';
 
 interface Props {

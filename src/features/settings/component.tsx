@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import {TextInput, TouchableOpacity, View} from 'react-native';
-import styles from './styles';
 import COLORS from 'src/shared/constants/colors';
 import TextWithSuperscript, {
   SUPER_SCRIPT_POSITION,
 } from 'src/shared/components/text-with-superscript';
+
+import styles from './styles';
 import SettingsSlider from './settings-slider';
 import {TEMPERATURE_SCALE} from './constants';
 

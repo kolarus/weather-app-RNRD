@@ -1,8 +1,9 @@
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
+import RainyWrapper from 'src/shared/components/rainy-wrapper';
+
 import DayItem from './day-item';
 import styles from './styles';
-import RainyWrapper from 'src/shared/components/rainy-wrapper';
 import {daysMock} from './mock';
 
 const DaySelection: React.FC = () => {

@@ -1,9 +1,10 @@
 import React from 'react';
 import {View, ViewStyle} from 'react-native';
 import Slider from '@react-native-community/slider';
-import styles from './styles';
 import COLORS from 'src/shared/constants/colors';
 import CommonText from 'src/shared/components/common-text';
+
+import styles from './styles';
 
 interface Props {
   step: number;

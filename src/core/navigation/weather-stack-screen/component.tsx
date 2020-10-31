@@ -4,6 +4,7 @@ import WeatherDetails from 'src/features/weather-details';
 import CitySelection from 'src/features/city-selection';
 import Settings from 'src/features/settings';
 import NAVIGATION_ROUTES from 'src/shared/constants/navigation-routes';
+
 import {CHEVRON_BACK_BUTTON_SCREEN_OPTIONS, HEADER_NAVIGATION_OPTIONS} from './constants';
 
 const WeatherStack = createStackNavigator();
