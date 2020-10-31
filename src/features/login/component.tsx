@@ -3,7 +3,7 @@ import {View, Animated, Easing, TextInput, TouchableOpacity, Keyboard} from 'rea
 import CommonText from 'src/shared/components/common-text';
 import FullscreenLoader from 'src/shared/components/fullscreen-loader';
 import COLORS from 'src/shared/constants/colors';
-import AuthContext from 'src/core/app/auth-context';
+import AuthContext from 'src/core/auth/auth-context';
 
 import styles from './styles';
 

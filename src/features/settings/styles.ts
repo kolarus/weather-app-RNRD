@@ -49,6 +49,11 @@ const styles = StyleSheet.create({
     borderLeftColor: 'gray',
     marginHorizontal: 10,
   },
+  logout: {
+    color: COLORS.ACCENT_COLOR,
+    marginTop: 10,
+    textTransform: 'uppercase',
+  },
 });
 
 export default styles;

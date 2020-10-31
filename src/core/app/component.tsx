@@ -6,9 +6,9 @@ import Login from 'src/features/login';
 import NAVIGATION_ROUTES from 'src/shared/constants/navigation-routes';
 import timeout from 'src/shared/utils/timeout';
 import DaySelection from 'src/features/day-selection';
+import AuthContext from 'src/core/auth/auth-context';
 
 import {HEADER_NAVIGATION_HIDDEN, TAB_NAVIGATION_OPTIONS} from './constants';
-import AuthContext from './auth-context';
 import WeatherStackScreen from '../navigation/weather-stack-screen';
 import {getWeatherOptions} from './utils';
 
