@@ -1,9 +1,9 @@
 import React from 'react';
-import {ImageBackground, View, ViewStyle} from 'react-native';
+import {ImageBackground, StyleProp, TextStyle, View} from 'react-native';
 import styles from './styles';
 
 interface Props {
-  style?: ViewStyle;
+  style?: StyleProp<TextStyle>;
 }
 
 const RainyWrapper: React.FC<Props> = (props) => {

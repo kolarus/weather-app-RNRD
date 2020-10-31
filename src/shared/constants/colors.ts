@@ -1,9 +1,12 @@
 const COLORS = {
   TEXT_DEFAULT: 'white', //replace
   BACKGROUND_DEFAULT: '#080b24', //replace
-  LOGIN_BUTTON: '#ff4200', //replace
-  LOADER_COLOR: 'gray', //replace
-  INPUT_INVALID: 'red', //replace
+  ACCENT_COLOR: '#ff4200',
+  LOADER_COLOR: 'gray',
+  INPUT_INVALID: 'red',
+  TAB_BAR_BACKGROUND: '#393d58',
+  TAB_ACTIVE_TINT_COLOR: 'tomato',
+  TAB_INACTIVE_TINT_COLOR: 'white',
 };
 
 export default COLORS;

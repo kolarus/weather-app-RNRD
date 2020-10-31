@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     paddingHorizontal: '3%',
-    paddingTop: '1%',
   },
   timeRow: {
     flexDirection: 'row',

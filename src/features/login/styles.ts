@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   loginButton: {
     width: '90%',
     marginVertical: 30,
-    backgroundColor: COLORS.LOGIN_BUTTON,
+    backgroundColor: COLORS.ACCENT_COLOR,
     borderRadius: 20,
     alignItems: 'center',
     justifyContent: 'center',
@@ -41,13 +41,6 @@ const styles = StyleSheet.create({
   },
   loginButtonText: {
     fontSize: 30,
-  },
-  loader: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: 'flex-end',
-    paddingBottom: '30%',
-    backgroundColor: 'gray',
-    opacity: 0.7,
   },
 });
 

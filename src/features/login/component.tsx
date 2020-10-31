@@ -1,6 +1,7 @@
 import React, {useState, useContext} from 'react';
-import {View, TextInput, TouchableOpacity, ActivityIndicator} from 'react-native';
+import {View, TextInput, TouchableOpacity, Keyboard} from 'react-native';
 import CommonText from 'src/shared/components/common-text';
+import FullscreenLoader from 'src/shared/components/fullscreen-loader';
 import COLORS from 'src/shared/constants/colors';
 import AuthContext from 'src/core/app/auth-context';
 import styles from './styles';
@@ -13,6 +14,7 @@ const Login: React.FC = () => {
   const [hasInvalidLoginAttempt, setHasInvalidLoginAttempt] = useState(false);
 
   const handleLoginPress = async () => {
+    Keyboard.dismiss();
     setIsLoading(true);
 
     const isAuthorized = await authContext.signIn(login, password);
@@ -46,12 +48,7 @@ const Login: React.FC = () => {
       <TouchableOpacity style={styles.loginButton} onPress={handleLoginPress}>
         <CommonText style={styles.loginButtonText}>LOGIN</CommonText>
       </TouchableOpacity>
-      {isLoading && (
-        <View style={styles.loader}>
-          {/*CREATE A FULLSCREEN LOADER COMPONENT*/}
-          <ActivityIndicator size="large" color={COLORS.LOADER_COLOR} />
-        </View>
-      )}
+      {isLoading && <FullscreenLoader />}
     </View>
   );
 };

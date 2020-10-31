@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, ScrollView} from 'react-native';
+import {useHeaderHeight} from '@react-navigation/stack';
 import Feather from 'react-native-vector-icons/Feather';
 import RainyWrapper from 'src/shared/components/rainy-wrapper';
 import CommonText from 'src/shared/components/common-text';
@@ -11,8 +12,10 @@ import styles from './styles';
 import {weatherByTime} from './mock';
 
 const WeatherDetails: React.FC = () => {
+  const headerHeight = useHeaderHeight();
+
   return (
-    <RainyWrapper style={styles.root}>
+    <RainyWrapper style={[styles.root, {paddingTop: headerHeight}]}>
       <View style={styles.timeRow}>
         <CommonText style={styles.updateTime}>10:19</CommonText>
         <Feather style={styles.updateIcon} name="refresh-cw" size={20} color="white" />
