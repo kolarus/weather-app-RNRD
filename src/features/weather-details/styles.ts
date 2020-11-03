@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   updateIcon: {
-    marginLeft: 10,
+    marginHorizontal: 10,
   },
   cityName: {
     fontFamily: 'PTSansNarrow',

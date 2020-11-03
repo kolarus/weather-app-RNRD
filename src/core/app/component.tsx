@@ -16,7 +16,7 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const App: React.FC = () => {
-  const [isAuthorized, setIsAuthorized] = useState(false);
+  const [isAuthorized, setIsAuthorized] = useState(true);
 
   const signIn = async (login: string, password: string): Promise<boolean> => {
     const isValidCredentials: boolean = login === 'admin' && password === 'admin';

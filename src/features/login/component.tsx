@@ -72,7 +72,7 @@ const Login: React.FC = () => {
       <TouchableOpacity style={styles.loginButton} onPress={handleLoginPress}>
         <CommonText style={styles.loginButtonText}>LOGIN</CommonText>
       </TouchableOpacity>
-      <FullscreenLoader isLoading={isLoading} />
+      <FullscreenLoader description="Authorization" isLoading={isLoading} />
     </View>
   );
 };

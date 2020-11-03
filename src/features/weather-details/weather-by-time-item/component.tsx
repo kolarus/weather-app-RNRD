@@ -9,13 +9,12 @@ import styles from './styles';
 interface Props {
   time: string;
   icon: string;
-  temperature: string;
-  isSelected?: boolean;
+  temperature: number;
 }
 
-const WeatherByTime: React.FC<Props> = (props) => {
+const WeatherByTimeItem: React.FC<Props> = (props) => {
   return (
-    <View style={[styles.root, props.isSelected && styles.root__selected]}>
+    <View style={styles.root}>
       <CommonText style={styles.time}>{props.time}</CommonText>
       <Feather style={styles.icon} name={props.icon} size={30} color="white" />
       <TextWithSuperscript fontSize={25} superScript="o">
@@ -25,4 +24,4 @@ const WeatherByTime: React.FC<Props> = (props) => {
   );
 };
 
-export default WeatherByTime;
+export default WeatherByTimeItem;

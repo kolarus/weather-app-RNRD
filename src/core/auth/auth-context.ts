@@ -1,12 +1,12 @@
 import {createContext} from 'react';
 
-interface ContextProps {
+interface AuthContext {
   isAuthorized: boolean;
   signIn(login: string, password: string): Promise<boolean>;
   signOut(): void;
 }
 
-const AuthContext = createContext<ContextProps>({
+const AuthContext = createContext<AuthContext>({
   isAuthorized: false,
   signIn: () => Promise.resolve(false),
   signOut: () => {},
