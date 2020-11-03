@@ -1,26 +1,24 @@
 import React from 'react';
 import {View, ScrollView} from 'react-native';
+import {useHeaderHeight} from '@react-navigation/stack';
 import Feather from 'react-native-vector-icons/Feather';
 import RainyWrapper from 'src/shared/components/rainy-wrapper';
 import CommonText from 'src/shared/components/common-text';
 import TextWithSuperscript from 'src/shared/components/text-with-superscript';
+
 import WeatherByTime from './weather-by-time';
 import WeatherDataItem from './weather-data-item';
 import styles from './styles';
-
 import {weatherByTime} from './mock';
 
 const WeatherDetails: React.FC = () => {
+  const headerHeight = useHeaderHeight();
+
   return (
-    <RainyWrapper style={styles.root}>
+    <RainyWrapper style={[styles.root, {paddingTop: headerHeight}]}>
       <View style={styles.timeRow}>
         <CommonText style={styles.updateTime}>10:19</CommonText>
-        <Feather
-          style={styles.updateIcon}
-          name="refresh-cw"
-          size={20}
-          color="white"
-        />
+        <Feather style={styles.updateIcon} name="refresh-cw" size={20} color="white" />
       </View>
       <View>
         <CommonText style={styles.cityName}>kharkiv</CommonText>
@@ -28,23 +26,13 @@ const WeatherDetails: React.FC = () => {
       </View>
       <View style={styles.generalWeatherDataRow}>
         <View style={styles.iconColumn}>
-          <Feather
-            style={styles.updateIcon}
-            name="cloud-snow"
-            size={80}
-            color="white"
-          />
+          <Feather style={styles.updateIcon} name="cloud-snow" size={80} color="white" />
         </View>
         <View style={styles.temperatureDataColumn}>
-          <TextWithSuperscript
-            textStyle={styles.temperature}
-            fontSize={60}
-            superScript="o">
+          <TextWithSuperscript textStyle={styles.temperature} fontSize={60} superScript="o">
             -2
           </TextWithSuperscript>
-          <CommonText style={styles.temperatureDescription}>
-            // mostly cloudy
-          </CommonText>
+          <CommonText style={styles.temperatureDescription}>// mostly cloudy</CommonText>
         </View>
         <View style={styles.sunsetColumn}>
           <Feather name="moon" size={30} color="white" />

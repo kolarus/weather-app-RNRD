@@ -2,6 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import CommonText from 'src/shared/components/common-text';
 import TextWithSuperscript from 'src/shared/components/text-with-superscript';
+
 import styles from './styles';
 
 interface Props {
@@ -16,10 +17,7 @@ const CityItem: React.FC<Props> = (props) => {
     <View style={styles.root}>
       <View style={styles.leftColumn}>
         <CommonText style={styles.indexLetter}>{props.letter}</CommonText>
-        <TextWithSuperscript
-          style={styles.temperature}
-          fontSize={60}
-          superScript="o">
+        <TextWithSuperscript style={styles.temperature} fontSize={60} superScript="o">
           {props.temperature}
         </TextWithSuperscript>
       </View>
