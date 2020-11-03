@@ -1,16 +1,27 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {TouchableOpacity} from 'react-native';
+import {useNavigation} from '@react-navigation/core';
 import RainyWrapper from 'src/shared/components/rainy-wrapper';
+import WeatherDataContext from 'src/shared/api/weather-data-context';
+import NAVIGATION_ROUTES from 'src/shared/constants/navigation-routes';
 
+import {getAvailableDays} from './utils';
 import DayItem from './day-item';
 import styles from './styles';
-import {daysMock} from './mock';
 
 const DaySelection: React.FC = () => {
+  const navigation = useNavigation();
+  const {weather} = useContext(WeatherDataContext);
+  const availableDays = weather ? getAvailableDays(weather) : [];
+
   return (
     <RainyWrapper style={styles.root}>
-      {daysMock.map((day) => (
-        <TouchableOpacity key={day.label}>
+      {availableDays.map((day) => (
+        <TouchableOpacity
+          key={day.label}
+          onPress={() =>
+            navigation.navigate(NAVIGATION_ROUTES.WEATHER_DETAILS, {showForDate: day.dt})
+          }>
           <DayItem dayLabel={day.label} icon={day.icon} temperatureRange={day.temperatureRange} />
         </TouchableOpacity>
       ))}
