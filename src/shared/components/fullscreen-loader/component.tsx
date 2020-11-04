@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState, useCallback} from 'react';
 import {ActivityIndicator, Animated} from 'react-native';
 import COLORS from 'src/shared/constants/colors';
 import CommonText from 'src/shared/components/common-text';
@@ -17,13 +17,16 @@ const FullscreenLoader: React.FC<Props> = (props) => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const targetOpacity = props.targetOpacity || DEFAULT_OPACITY;
 
-  const animateOpacityTo = (value: number, callback = () => {}): void => {
-    Animated.timing(fadeAnim, {
-      toValue: value,
-      duration: 700,
-      useNativeDriver: true,
-    }).start(callback);
-  };
+  const animateOpacityTo = useCallback(
+    (value: number, callback = () => {}): void => {
+      Animated.timing(fadeAnim, {
+        toValue: value,
+        duration: 700,
+        useNativeDriver: true,
+      }).start(callback);
+    },
+    [fadeAnim],
+  );
 
   useEffect(() => {
     if (props.isLoading) {

@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useCallback} from 'react';
 import dayjs from 'dayjs';
 
 import {WeatherData, Weather} from './types';
@@ -18,12 +18,12 @@ const useWeather = (
   const [weather, setWeather] = useState<Weather | null>(null);
   const [lastUpdated, setLastUpdated] = useState<string | null>(null);
   const [shouldRefresh, setShouldRefresh] = useState(true);
-  const refreshWeather = (newRefreshParams?: Array<string>) => {
+  const refreshWeather = useCallback((newRefreshParams?: Array<string>) => {
     setShouldRefresh(true);
     if (newRefreshParams) {
       setRefreshParams(newRefreshParams);
     }
-  };
+  }, []);
 
   useEffect(() => {
     if (shouldRefresh) {

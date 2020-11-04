@@ -3,11 +3,11 @@ import {WeatherByTime} from 'src/shared/api/types';
 const DEFAULT_ITEMS_QUANTITY = 8;
 
 const getWeatherItemsByTimeRange = (
-  visibleRange: {from: number; to: number},
+  timRange: {from: number; to: number},
   weatherItems: Array<WeatherByTime>,
 ) => {
   const weatherItemsInRange = weatherItems.filter((weatherItem) => {
-    return weatherItem.dt >= visibleRange.from && weatherItem.dt <= visibleRange.to;
+    return weatherItem.dt >= timRange.from && weatherItem.dt <= timRange.to;
   });
   if (weatherItemsInRange.length === DEFAULT_ITEMS_QUANTITY) {
     return weatherItemsInRange;

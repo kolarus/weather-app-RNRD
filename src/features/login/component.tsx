@@ -1,4 +1,4 @@
-import React, {useState, useRef, useContext} from 'react';
+import React, {useState, useRef, useContext, useCallback} from 'react';
 import {View, Animated, Easing, TextInput, TouchableOpacity, Keyboard} from 'react-native';
 import CommonText from 'src/shared/components/common-text';
 import FullscreenLoader from 'src/shared/components/fullscreen-loader';
@@ -15,7 +15,7 @@ const Login: React.FC = () => {
   const [hasInvalidLoginAttempt, setHasInvalidLoginAttempt] = useState(false);
   const shakeY = useRef(new Animated.Value(0)).current;
 
-  const shakeInputs = () => {
+  const shakeInputs = useCallback(() => {
     Animated.sequence([
       Animated.timing(shakeY, {
         toValue: -5,
@@ -29,9 +29,9 @@ const Login: React.FC = () => {
         useNativeDriver: true,
       }),
     ]).start();
-  };
+  }, [shakeY]);
 
-  const handleLoginPress = async () => {
+  const handleLoginPress = useCallback(async () => {
     Keyboard.dismiss();
     setIsLoading(true);
 
@@ -42,7 +42,7 @@ const Login: React.FC = () => {
       shakeInputs();
       setHasInvalidLoginAttempt(true);
     }
-  };
+  }, [shakeInputs, authContext, login, password]);
 
   return (
     <View style={styles.root}>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -19,16 +19,16 @@ const Tab = createBottomTabNavigator();
 const App: React.FC = () => {
   const [isAuthorized, setIsAuthorized] = useState(false);
 
-  const signIn = async (login: string, password: string): Promise<boolean> => {
+  const signIn = useCallback(async (login: string, password: string): Promise<boolean> => {
     const isValidCredentials: boolean = login === 'admin' && password === 'admin';
 
     await timeout(3000);
     setIsAuthorized(isValidCredentials);
 
     return isValidCredentials;
-  };
+  }, []);
 
-  const signOut = () => setIsAuthorized(false);
+  const signOut = useCallback(() => setIsAuthorized(false), []);
 
   return (
     <AuthContext.Provider value={{isAuthorized, signIn, signOut}}>
