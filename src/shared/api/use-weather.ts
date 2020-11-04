@@ -18,7 +18,7 @@ const useWeather = (
   const [weather, setWeather] = useState<Weather | null>(null);
   const [lastUpdated, setLastUpdated] = useState<string | null>(null);
   const [shouldRefresh, setShouldRefresh] = useState(true);
-  const refreshWeather = (newRefreshParams: Array<string> | null = null) => {
+  const refreshWeather = (newRefreshParams?: Array<string>) => {
     setShouldRefresh(true);
     if (newRefreshParams) {
       setRefreshParams(newRefreshParams);
