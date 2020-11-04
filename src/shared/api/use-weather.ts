@@ -4,11 +4,26 @@ import dayjs from 'dayjs';
 import {WeatherData, Weather} from './types';
 import {getWeather} from './weather';
 
-const useWeather = (city: string, country: string, metric: string = 'metric'): WeatherData => {
+const useWeather = (
+  initialCity: string,
+  initialCountry: string,
+  initialMetric: string = 'metric',
+): WeatherData => {
+  const [refreshParams, setRefreshParams] = useState<Array<string>>([
+    initialCity,
+    initialCountry,
+    initialMetric,
+  ]);
+  const [city, country, metric] = refreshParams;
   const [weather, setWeather] = useState<Weather | null>(null);
   const [lastUpdated, setLastUpdated] = useState<string | null>(null);
   const [shouldRefresh, setShouldRefresh] = useState(true);
-  const refreshWeather = () => setShouldRefresh(true);
+  const refreshWeather = (newRefreshParams: Array<string> | null = null) => {
+    setShouldRefresh(true);
+    if (newRefreshParams) {
+      setRefreshParams(newRefreshParams);
+    }
+  };
 
   useEffect(() => {
     if (shouldRefresh) {

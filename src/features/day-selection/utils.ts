@@ -4,18 +4,14 @@ import {ICON_BY_WEATHER_TYPE} from 'src/shared/api/constants';
 
 import {Day} from './types';
 
-export const getAvailableDays = (weather: Weather): Array<Day> => {
-  const days = weather.list.map((weatherItem) => dayjs(weatherItem.dt * 1000).format('ddd'));
-  const daysSet = new Set(days);
-  const daysLabels = [...daysSet];
+const secondsToShortWeekday = (seconds: number): string => dayjs(seconds * 1000).format('ddd');
 
-  return daysLabels.map((label) => {
-    const availableWeatherData = weather.list.filter((weatherItem) => {
-      return dayjs(weatherItem.dt * 1000).format('ddd') === label;
-    });
-    const temperatures = availableWeatherData.map((weatherItem) =>
-      Math.round(weatherItem.main.temp),
-    );
+export const getAvailableDays = (weather: Weather): Array<Day> => {
+  const daysLabelsSet = new Set(weather.list.map(({dt}) => secondsToShortWeekday(dt)));
+
+  return [...daysLabelsSet].map((label) => {
+    const availableWeatherData = weather.list.filter(({dt}) => secondsToShortWeekday(dt) === label);
+    const temperatures = availableWeatherData.map(({main}) => Math.round(main.temp));
 
     return {
       label,

@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/core';
 import RainyWrapper from 'src/shared/components/rainy-wrapper';
@@ -12,7 +12,15 @@ import styles from './styles';
 const DaySelection: React.FC = () => {
   const navigation = useNavigation();
   const {weather} = useContext(WeatherDataContext);
-  const availableDays = weather ? getAvailableDays(weather) : [];
+  const [availableDays, setAvailableDays] = useState(() =>
+    weather ? getAvailableDays(weather) : [],
+  );
+
+  useEffect(() => {
+    if (weather) {
+      setAvailableDays(getAvailableDays(weather));
+    }
+  }, [weather]);
 
   return (
     <RainyWrapper style={styles.root}>
@@ -20,7 +28,7 @@ const DaySelection: React.FC = () => {
         <TouchableOpacity
           key={day.label}
           onPress={() =>
-            navigation.navigate(NAVIGATION_ROUTES.WEATHER_DETAILS, {showForDate: day.dt})
+            navigation.navigate(NAVIGATION_ROUTES.WEATHER_DETAILS, {showForTime: day.dt})
           }>
           <DayItem dayLabel={day.label} icon={day.icon} temperatureRange={day.temperatureRange} />
         </TouchableOpacity>

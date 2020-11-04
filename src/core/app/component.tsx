@@ -7,8 +7,7 @@ import NAVIGATION_ROUTES from 'src/shared/constants/navigation-routes';
 import timeout from 'src/shared/utils/timeout';
 import DaySelection from 'src/features/day-selection';
 import AuthContext from 'src/core/auth/auth-context';
-import WeatherDataContext from 'src/shared/api/weather-data-context';
-import useWeather from 'src/shared/api/use-weather';
+import WeatherDataContextProvider from 'src/shared/api/weather-data-context-provider';
 
 import {HEADER_NAVIGATION_HIDDEN, TAB_NAVIGATION_OPTIONS} from './constants';
 import WeatherStackScreen from '../navigation/weather-stack-screen';
@@ -18,8 +17,7 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const App: React.FC = () => {
-  const [isAuthorized, setIsAuthorized] = useState(true);
-  const {weather, lastUpdated, isFetching, refreshWeather} = useWeather('Kharkiv', 'ua');
+  const [isAuthorized, setIsAuthorized] = useState(false);
 
   const signIn = async (login: string, password: string): Promise<boolean> => {
     const isValidCredentials: boolean = login === 'admin' && password === 'admin';
@@ -34,9 +32,9 @@ const App: React.FC = () => {
 
   return (
     <AuthContext.Provider value={{isAuthorized, signIn, signOut}}>
-      <WeatherDataContext.Provider value={{weather, lastUpdated, isFetching, refreshWeather}}>
-        <NavigationContainer>
-          {isAuthorized ? (
+      <NavigationContainer>
+        {isAuthorized ? (
+          <WeatherDataContextProvider>
             <Tab.Navigator tabBarOptions={TAB_NAVIGATION_OPTIONS}>
               <Tab.Screen
                 options={getWeatherOptions}
@@ -49,17 +47,17 @@ const App: React.FC = () => {
                 component={DaySelection}
               />
             </Tab.Navigator>
-          ) : (
-            <Stack.Navigator>
-              <Stack.Screen
-                options={HEADER_NAVIGATION_HIDDEN}
-                name={NAVIGATION_ROUTES.LOGIN}
-                component={Login}
-              />
-            </Stack.Navigator>
-          )}
-        </NavigationContainer>
-      </WeatherDataContext.Provider>
+          </WeatherDataContextProvider>
+        ) : (
+          <Stack.Navigator>
+            <Stack.Screen
+              options={HEADER_NAVIGATION_HIDDEN}
+              name={NAVIGATION_ROUTES.LOGIN}
+              component={Login}
+            />
+          </Stack.Navigator>
+        )}
+      </NavigationContainer>
     </AuthContext.Provider>
   );
 };

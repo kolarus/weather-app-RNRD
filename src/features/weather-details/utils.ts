@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import {Weather} from 'src/shared/api/types';
 import {ICON_BY_WEATHER_TYPE} from 'src/shared/api/constants';
 
-const secondsToHmm = (seconds: number): string => dayjs(seconds * 1000).format('H:mm');
+export const secondsToHmm = (seconds: number): string => dayjs(seconds * 1000).format('H:mm');
 
 export const getFormattedSunsetTime = (weather: Weather) => secondsToHmm(weather.city.sunset);
 

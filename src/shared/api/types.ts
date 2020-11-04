@@ -26,5 +26,5 @@ export interface WeatherData {
   weather: Nullable<Weather>;
   lastUpdated: string | null;
   isFetching: boolean;
-  refreshWeather(): void;
+  refreshWeather(refreshParams: Array<string> | null): void;
 }
