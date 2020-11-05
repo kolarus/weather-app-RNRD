@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -7,6 +7,7 @@ import NAVIGATION_ROUTES from 'src/shared/constants/navigation-routes';
 import timeout from 'src/shared/utils/timeout';
 import DaySelection from 'src/features/day-selection';
 import AuthContext from 'src/core/auth/auth-context';
+import WeatherDataContextProvider from 'src/shared/api/weather-data-context-provider';
 
 import {HEADER_NAVIGATION_HIDDEN, TAB_NAVIGATION_OPTIONS} from './constants';
 import WeatherStackScreen from '../navigation/weather-stack-screen';
@@ -18,33 +19,35 @@ const Tab = createBottomTabNavigator();
 const App: React.FC = () => {
   const [isAuthorized, setIsAuthorized] = useState(false);
 
-  const signIn = async (login: string, password: string): Promise<boolean> => {
+  const signIn = useCallback(async (login: string, password: string): Promise<boolean> => {
     const isValidCredentials: boolean = login === 'admin' && password === 'admin';
 
     await timeout(3000);
     setIsAuthorized(isValidCredentials);
 
     return isValidCredentials;
-  };
+  }, []);
 
-  const signOut = () => setIsAuthorized(false);
+  const signOut = useCallback(() => setIsAuthorized(false), []);
 
   return (
     <AuthContext.Provider value={{isAuthorized, signIn, signOut}}>
       <NavigationContainer>
         {isAuthorized ? (
-          <Tab.Navigator tabBarOptions={TAB_NAVIGATION_OPTIONS}>
-            <Tab.Screen
-              options={getWeatherOptions}
-              name={NAVIGATION_ROUTES.WEATHER_STACK}
-              component={WeatherStackScreen}
-            />
-            <Tab.Screen
-              options={{title: 'FORECAST'}}
-              name={NAVIGATION_ROUTES.DAY_SELECTION}
-              component={DaySelection}
-            />
-          </Tab.Navigator>
+          <WeatherDataContextProvider>
+            <Tab.Navigator tabBarOptions={TAB_NAVIGATION_OPTIONS}>
+              <Tab.Screen
+                options={getWeatherOptions}
+                name={NAVIGATION_ROUTES.WEATHER_STACK}
+                component={WeatherStackScreen}
+              />
+              <Tab.Screen
+                options={{title: 'FORECAST'}}
+                name={NAVIGATION_ROUTES.DAY_SELECTION}
+                component={DaySelection}
+              />
+            </Tab.Navigator>
+          </WeatherDataContextProvider>
         ) : (
           <Stack.Navigator>
             <Stack.Screen

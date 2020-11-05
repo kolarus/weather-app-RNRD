@@ -1,29 +1,37 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState, useCallback} from 'react';
 import {ActivityIndicator, Animated} from 'react-native';
 import COLORS from 'src/shared/constants/colors';
+import CommonText from 'src/shared/components/common-text';
 
+import {DEFAULT_OPACITY} from './constants';
 import styles from './styles';
 
 interface Props {
   isLoading: boolean;
+  description?: string;
+  targetOpacity?: number;
 }
 
 const FullscreenLoader: React.FC<Props> = (props) => {
   const [showLoader, setShowLoader] = useState(props.isLoading);
   const fadeAnim = useRef(new Animated.Value(0)).current;
+  const targetOpacity = props.targetOpacity || DEFAULT_OPACITY;
 
-  const animateOpacityTo = (value: number, callback = () => {}): void => {
-    Animated.timing(fadeAnim, {
-      toValue: value,
-      duration: 500,
-      useNativeDriver: true,
-    }).start(callback);
-  };
+  const animateOpacityTo = useCallback(
+    (value: number, callback = () => {}): void => {
+      Animated.timing(fadeAnim, {
+        toValue: value,
+        duration: 700,
+        useNativeDriver: true,
+      }).start(callback);
+    },
+    [fadeAnim],
+  );
 
   useEffect(() => {
     if (props.isLoading) {
       setShowLoader(props.isLoading);
-      animateOpacityTo(0.7);
+      animateOpacityTo(targetOpacity);
     } else {
       animateOpacityTo(0, () => setShowLoader(false));
     }
@@ -33,6 +41,7 @@ const FullscreenLoader: React.FC<Props> = (props) => {
   return showLoader ? (
     <Animated.View style={[styles.root, {opacity: fadeAnim}]}>
       <ActivityIndicator size="large" color={COLORS.LOADER_COLOR} />
+      <CommonText>{props.description}</CommonText>
     </Animated.View>
   ) : null;
 };

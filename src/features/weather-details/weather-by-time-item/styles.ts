@@ -5,10 +5,6 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: 'center',
   },
-  root__selected: {
-    borderBottomWidth: 5,
-    borderColor: 'white',
-  },
   icon: {
     marginVertical: 10,
     marginHorizontal: 20,

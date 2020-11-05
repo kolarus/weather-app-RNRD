@@ -6,6 +6,6 @@ const NAVIGATION_ROUTES = {
   CITY_SELECTION: 'CITY_SELECTION',
   LOGIN: 'LOGIN',
   SETTINGS: 'SETTING',
-};
+} as const;
 
 export default NAVIGATION_ROUTES;

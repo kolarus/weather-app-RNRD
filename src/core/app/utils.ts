@@ -1,15 +1,10 @@
 import NAVIGATION_ROUTES from 'src/shared/constants/navigation-routes';
+import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 
 const getIsTabBarVisible = (navigation: {route: any}) => {
-  try {
-    // tricky hack to find actual route name, couldn't find better solution
-    const {routes} = navigation.route.state;
-    const actualCurrentRouteName = routes[routes.length - 1].name;
+  const actualCurrentRouteName = getFocusedRouteNameFromRoute(navigation.route);
 
-    return actualCurrentRouteName !== NAVIGATION_ROUTES.CITY_SELECTION;
-  } catch {
-    return true;
-  }
+  return actualCurrentRouteName !== NAVIGATION_ROUTES.CITY_SELECTION;
 };
 
 export const getWeatherOptions = (navigation: {route: any}) => ({
