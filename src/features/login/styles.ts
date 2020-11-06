@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     borderRadius: 20,
     backgroundColor: 'gray',
-    fontFamily: 'PTSansNarrow',
+    fontFamily: 'PT Sans Narrow',
   },
   input__invalid: {
     borderColor: COLORS.INPUT_INVALID,

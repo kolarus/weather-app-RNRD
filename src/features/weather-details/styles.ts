@@ -13,21 +13,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   updateTime: {
-    fontFamily: 'PTSansNarrow',
+    fontFamily: 'PT Sans Narrow',
     fontSize: 20,
   },
   updateIcon: {
     marginHorizontal: 10,
   },
   cityName: {
-    fontFamily: 'PTSansNarrow',
+    fontFamily: 'PT Sans Narrow',
     letterSpacing: 10,
     fontSize: 50,
     marginLeft: -5,
     textTransform: 'uppercase',
   },
   date: {
-    fontFamily: 'PTSansNarrow',
+    fontFamily: 'PT Sans Narrow',
     letterSpacing: 5,
     marginLeft: -2,
     fontSize: 25,
@@ -54,16 +54,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   temperature: {
-    fontFamily: 'PTSansNarrow',
+    fontFamily: 'PT Sans Narrow',
   },
   temperatureDescription: {
-    fontFamily: 'PTSansNarrow',
+    fontFamily: 'PT Sans Narrow',
     fontSize: 13,
     marginLeft: 10,
     textTransform: 'uppercase',
   },
   sunsetTime: {
-    fontFamily: 'PTSansNarrow',
+    fontFamily: 'PT Sans Narrow',
     fontSize: 20,
     marginTop: 10,
   },

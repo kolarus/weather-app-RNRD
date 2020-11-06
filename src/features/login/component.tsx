@@ -63,7 +63,7 @@ const Login: React.FC = () => {
         <TextInput
           style={[styles.input, hasInvalidLoginAttempt && styles.input__invalid]}
           placeholder="Password"
-          secureTextEntry={Boolean(password)}
+          //secureTextEntry={Boolean(password)}
           placeholderTextColor={COLORS.TEXT_DEFAULT}
           value={password}
           onChangeText={setPassword}

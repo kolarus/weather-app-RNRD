@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   scaleText: {
-    fontFamily: 'PTSansNarrow',
+    fontFamily: 'PT Sans Narrow',
     opacity: 0.5,
     color: COLORS.TEXT_DEFAULT,
   },

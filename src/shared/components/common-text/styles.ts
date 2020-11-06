@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   root: {
-    fontFamily: 'PTSans',
+    fontFamily: 'PT Sans',
     fontSize: 15,
     color: 'white',
   },
