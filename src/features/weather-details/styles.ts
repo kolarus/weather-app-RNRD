@@ -9,8 +9,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: '3%',
   },
   timeRow: {
+    paddingHorizontal: 10,
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  cityAndDateRow: {
+    paddingHorizontal: 10,
   },
   updateTime: {
     fontFamily: 'PT Sans Narrow',

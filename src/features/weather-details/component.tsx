@@ -59,7 +59,7 @@ const WeatherDetails: React.FC = () => {
           </TouchableWithoutFeedback>
         </Animated.View>
       </View>
-      <View>
+      <View style={styles.cityAndDateRow}>
         <CommonText style={styles.cityName}>{weather?.city.name}</CommonText>
         <CommonText style={styles.date}>
           {dayjs(weatherItemsToShow[0].dt * 1000).format('dddd, MMMM, D')}

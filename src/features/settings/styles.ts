@@ -8,6 +8,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   input: {
+    fontSize: 17,
+    height: 55,
     width: '80%',
     color: COLORS.TEXT_DEFAULT,
     borderBottomWidth: 2,
