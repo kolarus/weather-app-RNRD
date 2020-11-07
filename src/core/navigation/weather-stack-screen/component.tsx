@@ -1,5 +1,5 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import {createStackNavigator, HeaderStyleInterpolators} from '@react-navigation/stack';
 import WeatherDetails from 'src/features/weather-details';
 import CitySelection from 'src/features/city-selection';
 import Settings from 'src/features/settings';
@@ -11,7 +11,10 @@ const WeatherStack = createStackNavigator();
 
 const WeatherStackScreen: React.FC = () => {
   return (
-    <WeatherStack.Navigator>
+    <WeatherStack.Navigator
+      screenOptions={{
+        headerStyleInterpolator: HeaderStyleInterpolators.forUIKit,
+      }}>
       <WeatherStack.Screen
         options={HEADER_NAVIGATION_OPTIONS}
         name={NAVIGATION_ROUTES.WEATHER_DETAILS}

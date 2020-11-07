@@ -8,6 +8,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   input: {
+    fontSize: 17,
+    height: 55,
     width: '80%',
     color: COLORS.TEXT_DEFAULT,
     borderBottomWidth: 2,
@@ -35,7 +37,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   scaleText: {
-    fontFamily: 'PTSansNarrow',
+    fontFamily: 'PT Sans Narrow',
     opacity: 0.5,
     color: COLORS.TEXT_DEFAULT,
   },

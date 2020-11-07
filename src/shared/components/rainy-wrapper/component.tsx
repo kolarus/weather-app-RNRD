@@ -1,5 +1,6 @@
 import React from 'react';
 import {ImageBackground, StyleProp, TextStyle, View} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 import styles from './styles';
 
@@ -11,7 +12,7 @@ const RainyWrapper: React.FC<Props> = (props) => {
   return (
     <View style={[styles.root, props.style]}>
       <ImageBackground source={require('./rain-drops.png')} style={styles.image} />
-      {props.children}
+      <SafeAreaView>{props.children}</SafeAreaView>
     </View>
   );
 };

@@ -1,5 +1,5 @@
 import React, {useState, useRef, useContext, useCallback} from 'react';
-import {View, Animated, Easing, TextInput, TouchableOpacity, Keyboard} from 'react-native';
+import {View, Animated, Easing, TextInput, TouchableOpacity, Keyboard, Alert} from 'react-native';
 import CommonText from 'src/shared/components/common-text';
 import FullscreenLoader from 'src/shared/components/fullscreen-loader';
 import COLORS from 'src/shared/constants/colors';
@@ -39,8 +39,10 @@ const Login: React.FC = () => {
 
     if (!isAuthorized) {
       setIsLoading(false);
+      setPassword('');
       shakeInputs();
       setHasInvalidLoginAttempt(true);
+      Alert.alert('Login Error', 'Wrong credentials', [{text: 'OK', style: 'cancel'}]);
     }
   }, [shakeInputs, authContext, login, password]);
 
@@ -58,12 +60,14 @@ const Login: React.FC = () => {
           placeholder="Login"
           placeholderTextColor={COLORS.TEXT_DEFAULT}
           value={login}
+          autoCapitalize="none"
           onChangeText={setLogin}
         />
         <TextInput
           style={[styles.input, hasInvalidLoginAttempt && styles.input__invalid]}
           placeholder="Password"
-          secureTextEntry={Boolean(password)}
+          autoCapitalize="none"
+          secureTextEntry
           placeholderTextColor={COLORS.TEXT_DEFAULT}
           value={password}
           onChangeText={setPassword}

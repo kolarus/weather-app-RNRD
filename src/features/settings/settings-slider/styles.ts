@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   sliderLabel: {
-    fontFamily: 'PTSansNarrow',
+    fontFamily: 'PT Sans Narrow',
     fontSize: 23,
   },
   sliderLabel__static: {

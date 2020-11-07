@@ -9,7 +9,7 @@ import DaySelection from 'src/features/day-selection';
 import AuthContext from 'src/core/auth/auth-context';
 import WeatherDataContextProvider from 'src/shared/api/weather-data-context-provider';
 
-import {HEADER_NAVIGATION_HIDDEN, TAB_NAVIGATION_OPTIONS} from './constants';
+import {HEADER_NAVIGATION_HIDDEN, TAB_NAVIGATION_OPTIONS, NAVIGATION_THEME} from './constants';
 import WeatherStackScreen from '../navigation/weather-stack-screen';
 import {getWeatherOptions} from './utils';
 
@@ -32,7 +32,7 @@ const App: React.FC = () => {
 
   return (
     <AuthContext.Provider value={{isAuthorized, signIn, signOut}}>
-      <NavigationContainer>
+      <NavigationContainer theme={NAVIGATION_THEME}>
         {isAuthorized ? (
           <WeatherDataContextProvider>
             <Tab.Navigator tabBarOptions={TAB_NAVIGATION_OPTIONS}>

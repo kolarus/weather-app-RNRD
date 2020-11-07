@@ -11,6 +11,9 @@ export const HEADER_NAVIGATION_OPTIONS: StackNavigationOptions = {
   headerRight: NavigateToCitySelection,
   headerLeft: NavigateToSettings,
   headerTransparent: true,
+  headerStyle: {
+    backgroundColor: COLORS.BACKGROUND_DEFAULT,
+  },
 };
 
 export const CHEVRON_BACK_BUTTON_SCREEN_OPTIONS: StackNavigationOptions = {
@@ -20,6 +23,7 @@ export const CHEVRON_BACK_BUTTON_SCREEN_OPTIONS: StackNavigationOptions = {
       size: 30,
       color: COLORS.TEXT_DEFAULT,
     }),
+  headerBackTitleVisible: false,
   headerStyle: {
     backgroundColor: COLORS.BACKGROUND_DEFAULT,
   },
