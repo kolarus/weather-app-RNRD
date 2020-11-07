@@ -31,8 +31,6 @@ const Login: React.FC = () => {
     ]).start();
   }, [shakeY]);
 
-  const handleSkipLogin = () => authContext.signIn('admin', 'admin');
-
   const handleLoginPress = useCallback(async () => {
     Keyboard.dismiss();
     setIsLoading(true);
@@ -75,9 +73,6 @@ const Login: React.FC = () => {
           onChangeText={setPassword}
         />
       </Animated.View>
-      <TouchableOpacity onPress={handleSkipLogin}>
-        <CommonText>skip login ;)</CommonText>
-      </TouchableOpacity>
       <TouchableOpacity style={styles.loginButton} onPress={handleLoginPress}>
         <CommonText style={styles.loginButtonText}>LOGIN</CommonText>
       </TouchableOpacity>
