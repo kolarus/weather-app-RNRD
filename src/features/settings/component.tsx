@@ -1,10 +1,11 @@
-import React, {useState, useContext} from 'react';
+import React, {useState} from 'react';
 import {TextInput, TouchableOpacity, View} from 'react-native';
+import {useDispatch} from 'react-redux';
+import {setIsUserAuthorized} from 'src/core/redux/actions/user';
 import COLORS from 'src/shared/constants/colors';
 import TextWithSuperscript, {
   SUPER_SCRIPT_POSITION,
 } from 'src/shared/components/text-with-superscript';
-import AuthContext from 'src/core/auth/auth-context';
 
 import styles from './styles';
 import SettingsSlider from './settings-slider';
@@ -12,7 +13,7 @@ import {TEMPERATURE_SCALE} from './constants';
 import CommonText from '../../shared/components/common-text';
 
 const Settings: React.FC = () => {
-  const authContext = useContext(AuthContext);
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
   const [temperatureScale, setTemperatureScale] = useState(TEMPERATURE_SCALE.CELSIUS);
@@ -82,7 +83,7 @@ const Settings: React.FC = () => {
           </TextWithSuperscript>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity onPress={authContext.signOut}>
+      <TouchableOpacity onPress={() => dispatch(setIsUserAuthorized(false))}>
         <CommonText style={styles.logout}>Logout</CommonText>
       </TouchableOpacity>
     </View>

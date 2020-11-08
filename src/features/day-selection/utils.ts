@@ -1,6 +1,6 @@
-import {Weather} from 'src/shared/api/types';
+import {Weather} from 'src/shared/api/weather/types';
 import dayjs from 'dayjs';
-import {ICON_BY_WEATHER_TYPE} from 'src/shared/api/constants';
+import {ICON_BY_WEATHER_TYPE} from 'src/shared/api/weather/constants';
 
 import {Day} from './types';
 

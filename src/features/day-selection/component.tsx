@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/core';
 import RainyWrapper from 'src/shared/components/rainy-wrapper';
-import WeatherDataContext from 'src/shared/api/weather-data-context';
+import WeatherDataContext from 'src/shared/api/weather/weather-data-context';
 import NAVIGATION_ROUTES from 'src/shared/constants/navigation-routes';
 
 import {getAvailableDays} from './utils';

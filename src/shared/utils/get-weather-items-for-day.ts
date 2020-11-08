@@ -1,4 +1,4 @@
-import {WeatherByTime} from 'src/shared/api/types';
+import {WeatherByTime} from 'src/shared/api/weather/types';
 
 import getDayRangeInSeconds from './get-day-range-in-seconds';
 import getWeatherItemsByTimeRange from './get-weather-by-time-range';

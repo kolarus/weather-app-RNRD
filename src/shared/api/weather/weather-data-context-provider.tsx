@@ -1,5 +1,5 @@
 import React from 'react';
-import WeatherDataContext from 'src/shared/api/weather-data-context';
+import WeatherDataContext from 'src/shared/api/weather/weather-data-context';
 
 import useWeather from './use-weather';
 import {WeatherData} from './types';

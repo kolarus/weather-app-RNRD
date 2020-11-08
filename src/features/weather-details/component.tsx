@@ -8,7 +8,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import RainyWrapper from 'src/shared/components/rainy-wrapper';
 import CommonText from 'src/shared/components/common-text';
 import TextWithSuperscript from 'src/shared/components/text-with-superscript';
-import WeatherDataContext from 'src/shared/api/weather-data-context';
+import WeatherDataContext from 'src/shared/api/weather/weather-data-context';
 import getWeatherItemsForDay from 'src/shared/utils/get-weather-items-for-day';
 import NAVIGATION_ROUTES from 'src/shared/constants/navigation-routes';
 import {RoutesParamList} from 'src/shared/types';
