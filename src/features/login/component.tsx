@@ -4,7 +4,6 @@ import {View, Animated, TextInput, TouchableOpacity, Keyboard} from 'react-nativ
 import CommonText from 'src/shared/components/common-text';
 import FullscreenLoader from 'src/shared/components/fullscreen-loader';
 import COLORS from 'src/shared/constants/colors';
-//import AuthContext from 'src/core/auth/auth-context'; remove
 import {requestUserSignIn} from 'src/core/redux/actions/user';
 import {RootState} from 'src/core/redux/types';
 import {RequestSignInPayload} from 'src/core/redux/actions/user/types';
@@ -37,6 +36,8 @@ const Login: React.FC<Props> = (props) => {
     dispatch(requestUserSignIn({login, password}));
   }, [dispatch, login, password]);
 
+  //const quickLogin = () => dispatch(requestUserSignIn({login: 'admin', password: 'admin'}));
+
   return (
     <View style={styles.root}>
       <Animated.View
@@ -67,6 +68,9 @@ const Login: React.FC<Props> = (props) => {
       <TouchableOpacity style={styles.loginButton} onPress={handleLoginPress}>
         <CommonText style={styles.loginButtonText}>LOGIN</CommonText>
       </TouchableOpacity>
+      {/*<TouchableOpacity style={{flex: 1}} onPress={quickLogin}>
+        <CommonText>quick sign in</CommonText>
+      </TouchableOpacity>*/}
       <FullscreenLoader description="Authorization" isLoading={props.isAuthorizationInProgress} />
     </View>
   );

@@ -1,3 +1,6 @@
+// imperial, metric units
+import {Weather} from 'src/shared/api/weather/types';
+
 export interface RootState {
   user: {
     isAuthorized: boolean;
@@ -5,6 +8,18 @@ export interface RootState {
       isAuthorizationInProgress: boolean;
       hasInvalidLoginAttempt: boolean;
     };
+    settings: {
+      units: string;
+    };
+  };
+  weather: {
+    ui: {
+      isFetching: boolean;
+    };
+    weatherData: Nullable<Weather>;
+    selectedCity: string;
+    selectedCountry: string;
+    lastUpdated: string;
   };
 }
 

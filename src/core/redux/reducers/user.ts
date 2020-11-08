@@ -6,6 +6,9 @@ const initialState = {
     isAuthorizationInProgress: false,
     hasInvalidLoginAttempt: false,
   },
+  settings: {
+    units: 'metric',
+  },
   isAuthorized: false,
 };
 
