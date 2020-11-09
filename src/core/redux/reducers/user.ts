@@ -21,7 +21,7 @@ const user = (state = initialState, action: Action) => {
       };
     }
 
-    case USER_ACTIONS.SET_IS_AUTHORIZATION_IN_PROGRESS: {
+    case USER_ACTIONS.SET_IS_FETCHING: {
       return {
         ...state,
         ui: {

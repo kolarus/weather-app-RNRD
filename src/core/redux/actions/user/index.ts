@@ -8,7 +8,7 @@ export const setHasInvalidLoginAttempt = (payload: boolean): Action => ({
 });
 
 export const setIsAuthorizationInProgress = (payload: boolean): Action => ({
-  type: USER_ACTIONS.SET_IS_AUTHORIZATION_IN_PROGRESS,
+  type: USER_ACTIONS.SET_IS_FETCHING,
   payload,
 });
 

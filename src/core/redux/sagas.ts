@@ -10,9 +10,11 @@ import {
   setHasInvalidLoginAttempt,
 } from './actions/user';
 import {setIsWeatherFetching, setWeather} from './actions/weather';
+import {setCitiesFetching, setCities} from './actions/cities';
 import {RequestSignInAction} from './actions/user/types';
 import {FetchWeatherAction} from './actions/weather/types';
-import {USER_ACTIONS, WEATHER_ACTIONS} from './action-types';
+import {FetchCitiesAction} from './actions/cities/types';
+import {USER_ACTIONS, WEATHER_ACTIONS, CITIES_ACTION} from './action-types';
 
 export function* authorizeUser(action: RequestSignInAction) {
   try {
@@ -42,6 +44,7 @@ export function* fetchWeather(action: FetchWeatherAction) {
     yield put(setWeather(weather));
     yield put(setIsWeatherFetching({isFetching: false, lastUpdated: dayjs().format('HH:mm')}));
   } catch (error) {
+    yield put(setIsWeatherFetching({isFetching: false, lastUpdated: dayjs().format('HH:mm')}));
     Alert.alert('Error while fetching weather', error.message, [{text: 'OK', style: 'cancel'}]);
   }
 }
@@ -50,6 +53,30 @@ export function* watchFetchWeather() {
   yield takeLatest(WEATHER_ACTIONS.FETCH_WEATHER, fetchWeather);
 }
 
+export function* fetchCities(action: FetchCitiesAction) {
+  try {
+    yield put(setCitiesFetching(true));
+    const cities = yield Promise.all(
+      action.payload.cities.map((city, index) => {
+        console.log('req', index);
+
+        return getWeather(city.name, city.country, action.payload.units);
+      }),
+    );
+    console.log('citites', cities);
+    yield put(setCities(cities));
+    yield put(setCitiesFetching(false));
+  } catch (error) {
+    Alert.alert('Error while fetching weather for cities', error.message, [
+      {text: 'OK', style: 'cancel'},
+    ]);
+  }
+}
+
+export function* watchFetchCities() {
+  yield takeLatest(CITIES_ACTION.FETCH_CITIES, fetchCities);
+}
+
 export default function* rootSaga() {
-  yield all([watchAuthorizeUser(), watchFetchWeather()]);
+  yield all([watchAuthorizeUser(), watchFetchWeather(), watchFetchCities()]);
 }

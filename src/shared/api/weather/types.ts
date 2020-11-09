@@ -16,6 +16,7 @@ export interface WeatherByTime {
 export interface Weather {
   city: {
     name: string;
+    country: string;
     sunset: number;
     sunrise: number;
   };

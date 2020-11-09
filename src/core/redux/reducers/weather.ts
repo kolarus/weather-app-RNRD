@@ -31,6 +31,14 @@ const weather = (state = initialState, action: Action) => {
       };
     }
 
+    case WEATHER_ACTIONS.SET_CITY: {
+      return {
+        ...state,
+        selectedCity: action.payload.city,
+        selectedCountry: action.payload.country,
+      };
+    }
+
     default:
       return state;
   }

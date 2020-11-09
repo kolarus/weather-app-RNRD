@@ -63,7 +63,6 @@ const WeatherDetails: React.FC<Props> = (props) => {
   }, [isFetching, spinAnimation]);
 
   useEffect(() => {
-    console.log('useEffec');
     dispatch(
       fetchWeather({
         city: props.selectedCity,

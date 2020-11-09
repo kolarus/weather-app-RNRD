@@ -23,7 +23,7 @@ const CityItem: React.FC<Props> = (props) => {
       </View>
       <View style={styles.rightColumn}>
         <CommonText style={styles.cityName}>{props.name}</CommonText>
-        <CommonText style={styles.weatherInfo}>{props.description}</CommonText>
+        <CommonText style={styles.weatherInfo}>// {props.description}</CommonText>
       </View>
     </View>
   );

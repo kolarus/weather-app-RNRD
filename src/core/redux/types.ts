@@ -21,6 +21,12 @@ export interface RootState {
     selectedCountry: string;
     lastUpdated: string;
   };
+  cities: {
+    ui: {
+      isFetching: boolean;
+    };
+    cities: Array<Weather>;
+  };
 }
 
 export interface Action {
