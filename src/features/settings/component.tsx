@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {TextInput, TouchableOpacity, View} from 'react-native';
 import {useDispatch, connect} from 'react-redux';
 import {setIsUserAuthorized} from 'src/core/redux/actions/user';
@@ -25,6 +25,25 @@ const Settings: React.FC<Props> = (props) => {
   const [age, setAge] = useState('');
   const [mins, setMins] = useState(5);
 
+  const handleSetShowWeatherFor = useCallback(
+    (numberOfDays) => {
+      dispatch(setShowWeatherFor(numberOfDays));
+    },
+    [dispatch],
+  );
+
+  const handleSetUnitsToMetric = useCallback(() => {
+    dispatch(setUnits(UNITS.METRIC));
+  }, [dispatch]);
+
+  const handleSetUnitsToImperial = useCallback(() => {
+    dispatch(setUnits(UNITS.IMPERIAL));
+  }, [dispatch]);
+
+  const handleUserLogout = useCallback(() => {
+    dispatch(setIsUserAuthorized(false));
+  }, [dispatch]);
+
   return (
     <View style={styles.root}>
       <TextInput
@@ -47,7 +66,7 @@ const Settings: React.FC<Props> = (props) => {
         from={1}
         to={5}
         value={props.showWeatherFor}
-        onValueChange={(numberOfDays) => dispatch(setShowWeatherFor(numberOfDays))}
+        onValueChange={handleSetShowWeatherFor}
         staticLabel="show weather for">
         {props.showWeatherFor} days
       </SettingsSlider>
@@ -62,7 +81,7 @@ const Settings: React.FC<Props> = (props) => {
         {mins} mins
       </SettingsSlider>
       <View style={styles.scale}>
-        <TouchableOpacity onPress={() => dispatch(setUnits(UNITS.METRIC))}>
+        <TouchableOpacity onPress={handleSetUnitsToMetric}>
           <TextWithSuperscript
             textStyle={[
               styles.scaleText,
@@ -75,7 +94,7 @@ const Settings: React.FC<Props> = (props) => {
           </TextWithSuperscript>
         </TouchableOpacity>
         <View style={styles.divider} />
-        <TouchableOpacity onPress={() => dispatch(setUnits(UNITS.IMPERIAL))}>
+        <TouchableOpacity onPress={handleSetUnitsToImperial}>
           <TextWithSuperscript
             textStyle={[
               styles.scaleText,
@@ -88,7 +107,7 @@ const Settings: React.FC<Props> = (props) => {
           </TextWithSuperscript>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity onPress={() => dispatch(setIsUserAuthorized(false))}>
+      <TouchableOpacity onPress={handleUserLogout}>
         <CommonText style={styles.logout}>Logout</CommonText>
       </TouchableOpacity>
     </View>
