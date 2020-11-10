@@ -1,4 +1,3 @@
-// imperial, metric units
 import {Weather} from 'src/shared/api/weather/types';
 
 export interface RootState {

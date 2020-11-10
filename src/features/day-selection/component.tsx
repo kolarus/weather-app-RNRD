@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
 import {useNavigation} from '@react-navigation/core';
@@ -7,30 +7,23 @@ import NAVIGATION_ROUTES from 'src/shared/constants/navigation-routes';
 import {RootState} from 'src/core/redux/types';
 import {Weather} from 'src/shared/api/weather/types';
 
-import {getAvailableDays} from './utils';
+import {getAvailableDays} from './selectors';
 import DayItem from './day-item';
+import {Day} from './types';
 import styles from './styles';
 
 interface Props {
   weather: Nullable<Weather>;
   showWeatherFor: number;
+  availableDays: Array<Day>;
 }
 
 const DaySelection: React.FC<Props> = (props) => {
   const navigation = useNavigation();
-  const [availableDays, setAvailableDays] = useState(() =>
-    props.weather ? getAvailableDays(props.weather) : [],
-  );
-
-  useEffect(() => {
-    if (props.weather) {
-      setAvailableDays(getAvailableDays(props.weather));
-    }
-  }, [props.weather]);
 
   return (
     <RainyWrapper style={styles.root}>
-      {availableDays.slice(0, props.showWeatherFor).map((day) => (
+      {props.availableDays.slice(0, props.showWeatherFor).map((day) => (
         <TouchableOpacity
           key={day.label}
           onPress={() =>
@@ -44,7 +37,7 @@ const DaySelection: React.FC<Props> = (props) => {
 };
 
 const mapStateToProps = (state: RootState) => ({
-  weather: state.weather.weatherData,
+  availableDays: getAvailableDays(state),
   showWeatherFor: state.user.settings.showWeatherFor,
 });
 
