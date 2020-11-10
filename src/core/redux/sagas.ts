@@ -57,13 +57,10 @@ export function* fetchCities(action: FetchCitiesAction) {
   try {
     yield put(setCitiesFetching(true));
     const cities = yield Promise.all(
-      action.payload.cities.map((city, index) => {
-        console.log('req', index);
-
-        return getWeather(city.name, city.country, action.payload.units);
-      }),
+      action.payload.cities.map((city) =>
+        getWeather(city.name, city.country, action.payload.units),
+      ),
     );
-    console.log('citites', cities);
     yield put(setCities(cities));
     yield put(setCitiesFetching(false));
   } catch (error) {

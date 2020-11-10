@@ -21,3 +21,13 @@ export const requestUserSignIn = (payload: RequestSignInPayload): RequestSignInA
   type: USER_ACTIONS.REQUEST_SIGN_IN,
   payload,
 });
+
+export const setShowWeatherFor = (payload: number): Action => ({
+  type: USER_ACTIONS.SET_SHOW_WEATHER_FOR,
+  payload,
+});
+
+export const setUnits = (payload: string): Action => ({
+  type: USER_ACTIONS.SET_UNITS,
+  payload,
+});

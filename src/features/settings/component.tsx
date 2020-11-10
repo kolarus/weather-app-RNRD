@@ -1,23 +1,28 @@
 import React, {useState} from 'react';
 import {TextInput, TouchableOpacity, View} from 'react-native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, connect} from 'react-redux';
 import {setIsUserAuthorized} from 'src/core/redux/actions/user';
 import COLORS from 'src/shared/constants/colors';
 import TextWithSuperscript, {
   SUPER_SCRIPT_POSITION,
 } from 'src/shared/components/text-with-superscript';
+import {setShowWeatherFor, setUnits} from 'src/core/redux/actions/user';
 
 import styles from './styles';
 import SettingsSlider from './settings-slider';
-import {TEMPERATURE_SCALE} from './constants';
+import {UNITS} from './constants';
 import CommonText from '../../shared/components/common-text';
+import {RootState} from '../../core/redux/types';
 
-const Settings: React.FC = () => {
+interface Props {
+  showWeatherFor: number;
+  units: string;
+}
+
+const Settings: React.FC<Props> = (props) => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
-  const [temperatureScale, setTemperatureScale] = useState(TEMPERATURE_SCALE.CELSIUS);
-  const [days, setDays] = useState(100);
   const [mins, setMins] = useState(5);
 
   return (
@@ -39,12 +44,12 @@ const Settings: React.FC = () => {
       <SettingsSlider
         style={styles.daysSlider}
         step={1}
-        from={0}
-        to={365}
-        value={days}
-        onValueChange={setDays}
+        from={1}
+        to={5}
+        value={props.showWeatherFor}
+        onValueChange={(numberOfDays) => dispatch(setShowWeatherFor(numberOfDays))}
         staticLabel="show weather for">
-        {days} days
+        {props.showWeatherFor} days
       </SettingsSlider>
       <SettingsSlider
         style={styles.minsSlider}
@@ -57,11 +62,11 @@ const Settings: React.FC = () => {
         {mins} mins
       </SettingsSlider>
       <View style={styles.scale}>
-        <TouchableOpacity onPress={() => setTemperatureScale(TEMPERATURE_SCALE.CELSIUS)}>
+        <TouchableOpacity onPress={() => dispatch(setUnits(UNITS.METRIC))}>
           <TextWithSuperscript
             textStyle={[
               styles.scaleText,
-              temperatureScale === TEMPERATURE_SCALE.CELSIUS && styles.scaleText__selected,
+              props.units === UNITS.METRIC && styles.scaleText__selected,
             ]}
             fontSize={40}
             superScript="o"
@@ -70,11 +75,11 @@ const Settings: React.FC = () => {
           </TextWithSuperscript>
         </TouchableOpacity>
         <View style={styles.divider} />
-        <TouchableOpacity onPress={() => setTemperatureScale(TEMPERATURE_SCALE.FAHRENHEIT)}>
+        <TouchableOpacity onPress={() => dispatch(setUnits(UNITS.IMPERIAL))}>
           <TextWithSuperscript
             textStyle={[
               styles.scaleText,
-              temperatureScale === TEMPERATURE_SCALE.FAHRENHEIT && styles.scaleText__selected,
+              props.units === UNITS.IMPERIAL && styles.scaleText__selected,
             ]}
             fontSize={40}
             superScript="o"
@@ -90,4 +95,9 @@ const Settings: React.FC = () => {
   );
 };
 
-export default Settings;
+const mapStateToProps = (state: RootState) => ({
+  showWeatherFor: state.user.settings.showWeatherFor,
+  units: state.user.settings.units,
+});
+
+export default connect(mapStateToProps)(Settings);

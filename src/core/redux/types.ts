@@ -10,6 +10,7 @@ export interface RootState {
     };
     settings: {
       units: string;
+      showWeatherFor: number;
     };
   };
   weather: {

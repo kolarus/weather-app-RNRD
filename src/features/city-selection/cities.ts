@@ -27,6 +27,7 @@ const CITIES = [
     name: 'New York',
     country: 'US',
   },
+  /* free API has a lot of limitations so we are doing a request for each city, the less cities - the smaller chance of API key to be blocked
   {
     name: 'Olenevka',
     country: 'UA',
@@ -46,7 +47,7 @@ const CITIES = [
   {
     name: 'Druzhkivka',
     country: 'UA',
-  },
+  },*/
 ];
 
 export default CITIES;

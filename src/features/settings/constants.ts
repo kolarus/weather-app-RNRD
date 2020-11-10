@@ -1,4 +1,4 @@
-export enum TEMPERATURE_SCALE {
-  CELSIUS = 'CELSIUS',
-  FAHRENHEIT = 'FAHRENHEIT',
-}
+export const UNITS = {
+  METRIC: 'metric',
+  IMPERIAL: 'imperial',
+};

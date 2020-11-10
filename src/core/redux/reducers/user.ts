@@ -8,6 +8,7 @@ const initialState = {
   },
   settings: {
     units: 'metric',
+    showWeatherFor: 5,
   },
   isAuthorized: false,
 };
@@ -37,6 +38,26 @@ const user = (state = initialState, action: Action) => {
         ui: {
           ...state.ui,
           hasInvalidLoginAttempt: action.payload,
+        },
+      };
+    }
+
+    case USER_ACTIONS.SET_SHOW_WEATHER_FOR: {
+      return {
+        ...state,
+        settings: {
+          ...state.settings,
+          showWeatherFor: action.payload,
+        },
+      };
+    }
+
+    case USER_ACTIONS.SET_UNITS: {
+      return {
+        ...state,
+        settings: {
+          ...state.settings,
+          units: action.payload,
         },
       };
     }

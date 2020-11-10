@@ -13,6 +13,7 @@ import styles from './styles';
 
 interface Props {
   weather: Nullable<Weather>;
+  showWeatherFor: number;
 }
 
 const DaySelection: React.FC<Props> = (props) => {
@@ -29,7 +30,7 @@ const DaySelection: React.FC<Props> = (props) => {
 
   return (
     <RainyWrapper style={styles.root}>
-      {availableDays.map((day) => (
+      {availableDays.slice(0, props.showWeatherFor).map((day) => (
         <TouchableOpacity
           key={day.label}
           onPress={() =>
@@ -44,6 +45,7 @@ const DaySelection: React.FC<Props> = (props) => {
 
 const mapStateToProps = (state: RootState) => ({
   weather: state.weather.weatherData,
+  showWeatherFor: state.user.settings.showWeatherFor,
 });
 
 export default connect(mapStateToProps)(DaySelection);
