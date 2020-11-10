@@ -13,12 +13,14 @@ import {getCityItems} from './selectors';
 import CITIES from './cities';
 import CityItem from './city-item';
 import {CityItemType} from './types';
+import {filterItemsBySearchString} from './utils';
 import styles from './styles';
 
 interface Props {
   cityItems: Array<CityItemType>;
   isFetching: boolean;
   units: string;
+  fetchedUnits: string;
 }
 
 const CitySelection: React.FC<Props> = (props) => {
@@ -26,6 +28,11 @@ const CitySelection: React.FC<Props> = (props) => {
   const navigation = useNavigation();
   const [list, setList] = useState(props.cityItems);
   const [searchString, setSearchString] = useState('');
+
+  const onRefresh = React.useCallback(() => {
+    setSearchString('');
+    dispatch(fetchCities({cities: CITIES, units: props.units}));
+  }, [dispatch, props.units]);
 
   const getCityItemPressHandler = useCallback(
     (city, country) => () => {
@@ -38,9 +45,7 @@ const CitySelection: React.FC<Props> = (props) => {
   const handleSearch = useCallback(
     (string: string) => {
       setSearchString(string);
-      setList(
-        props.cityItems.filter((city) => city.name.toUpperCase().startsWith(string.toUpperCase())),
-      );
+      setList(filterItemsBySearchString(props.cityItems, string));
     },
     [props.cityItems],
   );
@@ -50,15 +55,14 @@ const CitySelection: React.FC<Props> = (props) => {
   }, [handleSearch, searchString]);
 
   useEffect(() => {
-    if (props.cityItems.length === 0 && !props.isFetching) {
+    const notFetched = props.cityItems.length === 0;
+    const unitsChanged = props.fetchedUnits && props.units !== props.fetchedUnits;
+    const shouldFetchCities = (notFetched || unitsChanged) && !props.isFetching;
+
+    if (shouldFetchCities) {
       dispatch(fetchCities({cities: CITIES, units: props.units}));
     }
-  }, [dispatch, props.cityItems, props.isFetching, props.units]);
-
-  const onRefresh = React.useCallback(() => {
-    setSearchString('');
-    dispatch(fetchCities({cities: CITIES, units: props.units}));
-  }, [dispatch, props.units]);
+  }, [dispatch, props.cityItems, props.fetchedUnits, props.isFetching, props.units]);
 
   return (
     <View style={styles.root}>
@@ -97,6 +101,7 @@ const CitySelection: React.FC<Props> = (props) => {
 };
 
 const mapStateToProps = (state: RootState) => ({
+  fetchedUnits: state.cities.fetchedUnits,
   isFetching: state.cities.ui.isFetching,
   units: state.user.settings.units,
   cityItems: getCityItems(state),

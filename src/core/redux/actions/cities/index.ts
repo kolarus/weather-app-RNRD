@@ -9,6 +9,11 @@ export const setCitiesFetching = (payload: boolean): Action => ({
   payload,
 });
 
+export const setFetchedUnits = (payload: string): Action => ({
+  type: CITIES_ACTION.SET_FETCHED_UNITS,
+  payload,
+});
+
 export const fetchCities = (payload: FetchCitiesActionPayload): FetchCitiesAction => ({
   type: CITIES_ACTION.FETCH_CITIES,
   payload,

@@ -26,6 +26,7 @@ export interface RootState {
       isFetching: boolean;
     };
     cities: Array<Weather>;
+    fetchedUnits: string;
   };
 }
 

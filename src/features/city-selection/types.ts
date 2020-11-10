@@ -1,12 +1,7 @@
-export interface City {
+export interface CityItemType {
   name: string;
   country: string;
-}
-
-export type Cities = Array<City>;
-
-export interface CityItemType extends City {
-  temperature: string;
+  temperature: number;
   description: string;
   letter: string;
 }

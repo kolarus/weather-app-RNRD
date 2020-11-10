@@ -6,6 +6,7 @@ const initialState = {
     isFetching: false,
   },
   cities: [],
+  fetchedUnits: '',
 };
 
 const cities = (state = initialState, action: Action) => {
@@ -14,6 +15,13 @@ const cities = (state = initialState, action: Action) => {
       return {
         ...state,
         cities: action.payload,
+      };
+    }
+
+    case CITIES_ACTION.SET_FETCHED_UNITS: {
+      return {
+        ...state,
+        fetchedUnits: action.payload,
       };
     }
 

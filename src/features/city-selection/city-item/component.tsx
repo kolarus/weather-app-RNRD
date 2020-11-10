@@ -7,7 +7,7 @@ import styles from './styles';
 
 interface Props {
   letter: string;
-  temperature: string;
+  temperature: number;
   name: string;
   description: string;
 }
