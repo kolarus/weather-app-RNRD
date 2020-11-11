@@ -1,4 +1,4 @@
-import {WeatherByTime} from 'src/shared/api/types';
+import {WeatherByTime} from 'src/shared/api/weather/types';
 
 const DEFAULT_ITEMS_QUANTITY = 8;
 

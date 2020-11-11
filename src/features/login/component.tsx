@@ -1,50 +1,40 @@
-import React, {useState, useRef, useContext, useCallback} from 'react';
-import {View, Animated, Easing, TextInput, TouchableOpacity, Keyboard, Alert} from 'react-native';
+import React, {useState, useCallback, useEffect} from 'react';
+import {connect, useDispatch} from 'react-redux';
+import {View, Animated, TextInput, TouchableOpacity, Keyboard} from 'react-native';
 import CommonText from 'src/shared/components/common-text';
 import FullscreenLoader from 'src/shared/components/fullscreen-loader';
 import COLORS from 'src/shared/constants/colors';
-import AuthContext from 'src/core/auth/auth-context';
+import {requestUserSignIn} from 'src/core/redux/actions/user';
+import {RootState} from 'src/core/redux/types';
+import {RequestSignInPayload} from 'src/core/redux/actions/user/types';
 
+import useShakeInputAnimation from './use-shake-input-animation';
 import styles from './styles';
 
-const Login: React.FC = () => {
-  const authContext = useContext(AuthContext);
+interface Props {
+  isAuthorized: boolean;
+  isAuthorizationInProgress: boolean;
+  hasInvalidLoginAttempt: boolean;
+  requestUserSignIn(payload: RequestSignInPayload): void;
+}
+
+const Login: React.FC<Props> = (props) => {
+  const dispatch = useDispatch();
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [hasInvalidLoginAttempt, setHasInvalidLoginAttempt] = useState(false);
-  const shakeY = useRef(new Animated.Value(0)).current;
+  const shakeInputAnimation = useShakeInputAnimation();
+  const startShakeInputAnimation = shakeInputAnimation.start;
 
-  const shakeInputs = useCallback(() => {
-    Animated.sequence([
-      Animated.timing(shakeY, {
-        toValue: -5,
-        duration: 100,
-        easing: Easing.linear,
-        useNativeDriver: true,
-      }),
-      Animated.spring(shakeY, {
-        toValue: 0,
-        friction: 2,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  }, [shakeY]);
+  useEffect(() => {
+    if (props.hasInvalidLoginAttempt) {
+      startShakeInputAnimation();
+    }
+  }, [startShakeInputAnimation, props.hasInvalidLoginAttempt]);
 
   const handleLoginPress = useCallback(async () => {
     Keyboard.dismiss();
-    setIsLoading(true);
-
-    const isAuthorized = await authContext.signIn(login, password);
-
-    if (!isAuthorized) {
-      setIsLoading(false);
-      setPassword('');
-      shakeInputs();
-      setHasInvalidLoginAttempt(true);
-      Alert.alert('Login Error', 'Wrong credentials', [{text: 'OK', style: 'cancel'}]);
-    }
-  }, [shakeInputs, authContext, login, password]);
+    dispatch(requestUserSignIn({login, password}));
+  }, [dispatch, login, password]);
 
   return (
     <View style={styles.root}>
@@ -52,11 +42,11 @@ const Login: React.FC = () => {
         style={[
           styles.inputsWrapper,
           {
-            transform: [{translateY: shakeY}],
+            transform: [{translateY: shakeInputAnimation.positionY}],
           },
         ]}>
         <TextInput
-          style={[styles.input, hasInvalidLoginAttempt && styles.input__invalid]}
+          style={[styles.input, props.hasInvalidLoginAttempt && styles.input__invalid]}
           placeholder="Login"
           placeholderTextColor={COLORS.TEXT_DEFAULT}
           value={login}
@@ -64,7 +54,7 @@ const Login: React.FC = () => {
           onChangeText={setLogin}
         />
         <TextInput
-          style={[styles.input, hasInvalidLoginAttempt && styles.input__invalid]}
+          style={[styles.input, props.hasInvalidLoginAttempt && styles.input__invalid]}
           placeholder="Password"
           autoCapitalize="none"
           secureTextEntry
@@ -76,9 +66,15 @@ const Login: React.FC = () => {
       <TouchableOpacity style={styles.loginButton} onPress={handleLoginPress}>
         <CommonText style={styles.loginButtonText}>LOGIN</CommonText>
       </TouchableOpacity>
-      <FullscreenLoader description="Authorization" isLoading={isLoading} />
+      <FullscreenLoader description="Authorization" isLoading={props.isAuthorizationInProgress} />
     </View>
   );
 };
 
-export default Login;
+const mapStateToProps = (state: RootState) => ({
+  isAuthorized: state.user.isAuthorized,
+  isAuthorizationInProgress: state.user.ui.isAuthorizationInProgress,
+  hasInvalidLoginAttempt: state.user.ui.hasInvalidLoginAttempt,
+});
+
+export default connect(mapStateToProps)(Login);

@@ -1,23 +1,48 @@
-import React, {useState, useContext} from 'react';
+import React, {useCallback, useState} from 'react';
 import {TextInput, TouchableOpacity, View} from 'react-native';
+import {useDispatch, connect} from 'react-redux';
+import {setIsUserAuthorized} from 'src/core/redux/actions/user';
 import COLORS from 'src/shared/constants/colors';
 import TextWithSuperscript, {
   SUPER_SCRIPT_POSITION,
 } from 'src/shared/components/text-with-superscript';
-import AuthContext from 'src/core/auth/auth-context';
+import {setShowWeatherFor, setUnits} from 'src/core/redux/actions/user';
 
 import styles from './styles';
 import SettingsSlider from './settings-slider';
-import {TEMPERATURE_SCALE} from './constants';
+import {UNITS} from './constants';
 import CommonText from '../../shared/components/common-text';
+import {RootState} from '../../core/redux/types';
 
-const Settings: React.FC = () => {
-  const authContext = useContext(AuthContext);
+interface Props {
+  showWeatherFor: number;
+  units: string;
+}
+
+const Settings: React.FC<Props> = (props) => {
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
-  const [temperatureScale, setTemperatureScale] = useState(TEMPERATURE_SCALE.CELSIUS);
-  const [days, setDays] = useState(100);
   const [mins, setMins] = useState(5);
+
+  const handleSetShowWeatherFor = useCallback(
+    (numberOfDays) => {
+      dispatch(setShowWeatherFor(numberOfDays));
+    },
+    [dispatch],
+  );
+
+  const handleSetUnitsToMetric = useCallback(() => {
+    dispatch(setUnits(UNITS.METRIC));
+  }, [dispatch]);
+
+  const handleSetUnitsToImperial = useCallback(() => {
+    dispatch(setUnits(UNITS.IMPERIAL));
+  }, [dispatch]);
+
+  const handleUserLogout = useCallback(() => {
+    dispatch(setIsUserAuthorized(false));
+  }, [dispatch]);
 
   return (
     <View style={styles.root}>
@@ -38,12 +63,12 @@ const Settings: React.FC = () => {
       <SettingsSlider
         style={styles.daysSlider}
         step={1}
-        from={0}
-        to={365}
-        value={days}
-        onValueChange={setDays}
+        from={1}
+        to={5}
+        value={props.showWeatherFor}
+        onValueChange={handleSetShowWeatherFor}
         staticLabel="show weather for">
-        {days} days
+        {props.showWeatherFor} days
       </SettingsSlider>
       <SettingsSlider
         style={styles.minsSlider}
@@ -56,11 +81,11 @@ const Settings: React.FC = () => {
         {mins} mins
       </SettingsSlider>
       <View style={styles.scale}>
-        <TouchableOpacity onPress={() => setTemperatureScale(TEMPERATURE_SCALE.CELSIUS)}>
+        <TouchableOpacity onPress={handleSetUnitsToMetric}>
           <TextWithSuperscript
             textStyle={[
               styles.scaleText,
-              temperatureScale === TEMPERATURE_SCALE.CELSIUS && styles.scaleText__selected,
+              props.units === UNITS.METRIC && styles.scaleText__selected,
             ]}
             fontSize={40}
             superScript="o"
@@ -69,11 +94,11 @@ const Settings: React.FC = () => {
           </TextWithSuperscript>
         </TouchableOpacity>
         <View style={styles.divider} />
-        <TouchableOpacity onPress={() => setTemperatureScale(TEMPERATURE_SCALE.FAHRENHEIT)}>
+        <TouchableOpacity onPress={handleSetUnitsToImperial}>
           <TextWithSuperscript
             textStyle={[
               styles.scaleText,
-              temperatureScale === TEMPERATURE_SCALE.FAHRENHEIT && styles.scaleText__selected,
+              props.units === UNITS.IMPERIAL && styles.scaleText__selected,
             ]}
             fontSize={40}
             superScript="o"
@@ -82,11 +107,16 @@ const Settings: React.FC = () => {
           </TextWithSuperscript>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity onPress={authContext.signOut}>
+      <TouchableOpacity onPress={handleUserLogout}>
         <CommonText style={styles.logout}>Logout</CommonText>
       </TouchableOpacity>
     </View>
   );
 };
 
-export default Settings;
+const mapStateToProps = (state: RootState) => ({
+  showWeatherFor: state.user.settings.showWeatherFor,
+  units: state.user.settings.units,
+});
+
+export default connect(mapStateToProps)(Settings);

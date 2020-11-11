@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
   },
   indexLetter: {
     fontSize: 70,
-    marginRight: 10,
+    width: 55,
+    marginHorizontal: 10,
     opacity: 0.5,
     textTransform: 'uppercase',
   },

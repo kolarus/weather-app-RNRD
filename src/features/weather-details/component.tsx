@@ -1,5 +1,6 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {View, ScrollView, Animated, TouchableWithoutFeedback} from 'react-native';
+import {useDispatch, connect} from 'react-redux';
 import {useHeaderHeight} from '@react-navigation/stack';
 import {RouteProp} from '@react-navigation/native';
 import {useRoute} from '@react-navigation/core';
@@ -8,11 +9,13 @@ import Feather from 'react-native-vector-icons/Feather';
 import RainyWrapper from 'src/shared/components/rainy-wrapper';
 import CommonText from 'src/shared/components/common-text';
 import TextWithSuperscript from 'src/shared/components/text-with-superscript';
-import WeatherDataContext from 'src/shared/api/weather-data-context';
 import getWeatherItemsForDay from 'src/shared/utils/get-weather-items-for-day';
 import NAVIGATION_ROUTES from 'src/shared/constants/navigation-routes';
 import {RoutesParamList} from 'src/shared/types';
 import FullscreenLoader from 'src/shared/components/fullscreen-loader';
+import {Weather} from 'src/shared/api/weather/types';
+import {fetchWeather} from 'src/core/redux/actions/weather';
+import {RootState} from 'src/core/redux/types';
 
 import useSpinAnimation from './use-spin-animation';
 import {
@@ -25,17 +28,33 @@ import WeatherByTimeItem from './weather-by-time-item';
 import WeatherDataItem from './weather-data-item';
 import styles from './styles';
 
-const WeatherDetails: React.FC = () => {
+interface Props {
+  weather: Nullable<Weather>;
+  isFetching: boolean;
+  lastUpdated: string;
+  selectedCity: string;
+  selectedCountry: string;
+  units: string;
+}
+
+const WeatherDetails: React.FC<Props> = (props) => {
+  const {isFetching, lastUpdated} = props;
+  const dispatch = useDispatch();
   const headerHeight = useHeaderHeight();
   const spinAnimation = useSpinAnimation();
   const route: RouteProp<RoutesParamList, typeof NAVIGATION_ROUTES.WEATHER_DETAILS> = useRoute();
-  const {weather, lastUpdated, isFetching, refreshWeather} = useContext(WeatherDataContext);
   const showForTime = route.params?.showForTime * 1000;
   const [weatherItemsToShow, setWeatherItemsToShow] = useState(() =>
-    weather ? getWeatherItemsForDay(showForTime, weather.list) : [],
+    props.weather ? getWeatherItemsForDay(showForTime, props.weather.list) : [],
   );
-  const sunriseTime = weather ? getFormattedSunriseTime(weather) : null;
-  const sunsetTime = weather ? getFormattedSunsetTime(weather) : null;
+  const sunriseTime = props.weather ? getFormattedSunriseTime(props.weather) : null;
+  const sunsetTime = props.weather ? getFormattedSunsetTime(props.weather) : null;
+
+  const refetchWeather = useCallback(() => {
+    dispatch(
+      fetchWeather({city: props.selectedCity, country: props.selectedCountry, units: props.units}),
+    );
+  }, [dispatch, props.selectedCity, props.selectedCountry, props.units]);
 
   useEffect(() => {
     if (isFetching) {
@@ -44,23 +63,33 @@ const WeatherDetails: React.FC = () => {
   }, [isFetching, spinAnimation]);
 
   useEffect(() => {
-    if (weather) {
-      setWeatherItemsToShow(getWeatherItemsForDay(showForTime, weather.list));
+    dispatch(
+      fetchWeather({
+        city: props.selectedCity,
+        country: props.selectedCountry,
+        units: props.units,
+      }),
+    );
+  }, [dispatch, props.selectedCity, props.selectedCountry, props.units]);
+
+  useEffect(() => {
+    if (props.weather) {
+      setWeatherItemsToShow(getWeatherItemsForDay(showForTime, props.weather.list));
     }
-  }, [showForTime, weather]);
+  }, [showForTime, props.weather]);
 
   return weatherItemsToShow.length > 0 ? (
     <RainyWrapper style={[styles.root, {paddingTop: headerHeight}]}>
       <View style={styles.timeRow}>
         <CommonText style={styles.updateTime}>{lastUpdated}</CommonText>
         <Animated.View style={{transform: [{rotate: spinAnimation.rotation}]}}>
-          <TouchableWithoutFeedback onPress={() => refreshWeather()}>
+          <TouchableWithoutFeedback onPress={refetchWeather}>
             <Feather style={styles.updateIcon} name="refresh-cw" size={20} color="white" />
           </TouchableWithoutFeedback>
         </Animated.View>
       </View>
       <View style={styles.cityAndDateRow}>
-        <CommonText style={styles.cityName}>{weather?.city.name}</CommonText>
+        <CommonText style={styles.cityName}>{props.weather?.city.name}</CommonText>
         <CommonText style={styles.date}>
           {dayjs(weatherItemsToShow[0].dt * 1000).format('dddd, MMMM, D')}
         </CommonText>
@@ -121,4 +150,13 @@ const WeatherDetails: React.FC = () => {
   );
 };
 
-export default WeatherDetails;
+const mapStateToProps = (state: RootState) => ({
+  weather: state.weather.weatherData,
+  isFetching: state.weather.ui.isFetching,
+  lastUpdated: state.weather.lastUpdated,
+  selectedCity: state.weather.selectedCity,
+  selectedCountry: state.weather.selectedCountry,
+  units: state.user.settings.units,
+});
+
+export default connect(mapStateToProps)(WeatherDetails);
