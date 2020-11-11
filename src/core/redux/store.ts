@@ -9,6 +9,14 @@ import rootReducer from './reducers';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const sagaMiddleware = createSagaMiddleware();
 
+const middlewares = [sagaMiddleware];
+
+if (process.env.NODE_ENV === 'development') {
+  const {logger} = require('redux-logger');
+
+  middlewares.push(logger);
+}
+
 const persistedReducer = persistReducer(
   {
     key: 'root',
@@ -19,7 +27,7 @@ const persistedReducer = persistReducer(
 
 export const store = createStore(
   persistedReducer,
-  composeEnhancers(applyMiddleware(sagaMiddleware)),
+  composeEnhancers(applyMiddleware(...middlewares)),
 );
 
 // @ts-ignore https://github.com/rt2zz/redux-persist/issues/1140

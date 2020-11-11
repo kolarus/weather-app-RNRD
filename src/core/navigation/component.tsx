@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {useReduxDevToolsExtension} from '@react-navigation/devtools';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -20,8 +21,12 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const Navigation: React.FC<Props> = (props) => {
+  const navigationRef = React.useRef(null);
+
+  useReduxDevToolsExtension(navigationRef);
+
   return (
-    <NavigationContainer theme={NAVIGATION_THEME}>
+    <NavigationContainer ref={navigationRef} theme={NAVIGATION_THEME}>
       {props.isAuthorized ? (
         <Tab.Navigator tabBarOptions={TAB_NAVIGATION_OPTIONS}>
           <Tab.Screen

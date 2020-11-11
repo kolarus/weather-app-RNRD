@@ -2,7 +2,6 @@ import {RootState} from 'src/core/redux/types';
 
 import {CityItemType} from './types';
 
-// use reselect
 export const getCityItems = (state: RootState): Array<CityItemType> =>
   state.cities.cities.map((city) => ({
     name: city.city.name,
