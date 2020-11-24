@@ -13,6 +13,8 @@ import {getWeatherOptions} from './utils';
 import WeatherStackScreen from './weather-stack-screen';
 import {RootState} from '../redux/types';
 import useForegroundNotifications from '../use-foreground-notifications';
+import useBackgroundNotifications from '../use-background-notifications';
+import useQuitNotifications from '../use-quit-notifications';
 
 interface Props {
   isAuthorized: boolean;
@@ -26,6 +28,8 @@ const Navigation: React.FC<Props> = (props) => {
 
   useReduxDevToolsExtension(navigationRef);
   useForegroundNotifications(navigationRef);
+  useBackgroundNotifications(navigationRef);
+  useQuitNotifications(navigationRef);
 
   return (
     <NavigationContainer ref={navigationRef} theme={NAVIGATION_THEME}>

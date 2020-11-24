@@ -1,8 +1,7 @@
 import {useEffect} from 'react';
 import messaging from '@react-native-firebase/messaging';
 import {Alert} from 'react-native';
-
-import {NavigationRef} from './types';
+import {NavigationRef} from 'src/shared/types';
 
 const useForegroundNotifications = (navigationRef: NavigationRef) => {
   useEffect(() => {
