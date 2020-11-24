@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {useReduxDevToolsExtension} from '@react-navigation/devtools';
 import {NavigationContainer} from '@react-navigation/native';
@@ -7,6 +7,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import NAVIGATION_ROUTES from 'src/shared/constants/navigation-routes';
 import DaySelection from 'src/features/day-selection';
 import Login from 'src/features/login/component';
+import messaging from '@react-native-firebase/messaging';
 
 import {HEADER_NAVIGATION_HIDDEN, NAVIGATION_THEME, TAB_NAVIGATION_OPTIONS} from './constants';
 import {getWeatherOptions} from './utils';
@@ -26,6 +27,12 @@ const Tab = createBottomTabNavigator();
 const Navigation: React.FC<Props> = (props) => {
   const navigationRef = React.useRef(null);
 
+  useEffect(() => {
+    (async () => {
+      // asking for permissions for IOS, but in order for push notifications to works I still need developer account for 99USD :(
+      await messaging().requestPermission();
+    })();
+  }, []);
   useReduxDevToolsExtension(navigationRef);
   useForegroundNotifications(navigationRef);
   useBackgroundNotifications(navigationRef);
