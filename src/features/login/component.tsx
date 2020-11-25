@@ -1,6 +1,7 @@
 import React, {useState, useCallback, useEffect} from 'react';
 import {connect, useDispatch} from 'react-redux';
 import {View, Animated, TextInput, TouchableOpacity, Keyboard} from 'react-native';
+import * as Keychain from 'react-native-keychain';
 import CommonText from 'src/shared/components/common-text';
 import FullscreenLoader from 'src/shared/components/fullscreen-loader';
 import COLORS from 'src/shared/constants/colors';
@@ -24,6 +25,16 @@ const Login: React.FC<Props> = (props) => {
   const [password, setPassword] = useState('');
   const shakeInputAnimation = useShakeInputAnimation();
   const startShakeInputAnimation = shakeInputAnimation.start;
+
+  useEffect(() => {
+    (async () => {
+      const credentials = await Keychain.getGenericPassword();
+
+      if (credentials) {
+        setLogin(credentials.username);
+      }
+    })();
+  }, []);
 
   useEffect(() => {
     if (props.hasInvalidLoginAttempt) {
