@@ -12,6 +12,10 @@ import {HEADER_NAVIGATION_HIDDEN, NAVIGATION_THEME, TAB_NAVIGATION_OPTIONS} from
 import {getWeatherOptions} from './utils';
 import WeatherStackScreen from './weather-stack-screen';
 import {RootState} from '../redux/types';
+import useForegroundNotifications from '../use-foreground-notifications';
+import useBackgroundNotifications from '../use-background-notifications';
+import useQuitNotifications from '../use-quit-notifications';
+import usePermissions from '../use-permissions';
 
 interface Props {
   isAuthorized: boolean;
@@ -24,6 +28,10 @@ const Navigation: React.FC<Props> = (props) => {
   const navigationRef = React.useRef(null);
 
   useReduxDevToolsExtension(navigationRef);
+  usePermissions();
+  useForegroundNotifications(navigationRef);
+  useBackgroundNotifications(navigationRef);
+  useQuitNotifications(navigationRef);
 
   return (
     <NavigationContainer ref={navigationRef} theme={NAVIGATION_THEME}>
