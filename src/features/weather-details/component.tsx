@@ -83,7 +83,7 @@ const WeatherDetails: React.FC<Props> = (props) => {
       <View style={styles.timeRow}>
         <CommonText style={styles.updateTime}>{lastUpdated}</CommonText>
         <Animated.View style={{transform: [{rotate: spinAnimation.rotation}]}}>
-          <TouchableWithoutFeedback onPress={refetchWeather}>
+          <TouchableWithoutFeedback testID="WeatherDetails.refresh" onPress={refetchWeather}>
             <Feather style={styles.updateIcon} name="refresh-cw" size={20} color="white" />
           </TouchableWithoutFeedback>
         </Animated.View>

@@ -35,6 +35,8 @@ exports[`FullscreenLoader should match snapshot 1`] = `
         Object {},
       ]
     }
-  />
+  >
+    Test Descr
+  </Text>
 </View>
 `;

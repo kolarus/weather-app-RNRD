@@ -4,7 +4,7 @@ import {render} from '@testing-library/react-native';
 import FullscreenLoader from './component';
 
 test('FullscreenLoader should match snapshot', () => {
-  const {toJSON} = render(<FullscreenLoader isLoading={true} />);
+  const {toJSON} = render(<FullscreenLoader isLoading={true} description="Test Descr" />);
 
   expect(toJSON()).toMatchSnapshot();
 });

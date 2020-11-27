@@ -1,0 +1,927 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WeatherDetails should match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#393c50",
+        "flexDirection": "row",
+        "height": "100%",
+        "justifyContent": "center",
+      },
+      Array [
+        Object {
+          "alignItems": "flex-start",
+          "backgroundColor": "#080b24",
+          "flexDirection": "column",
+          "justifyContent": "flex-start",
+          "paddingHorizontal": "3%",
+        },
+        Object {
+          "paddingTop": 100,
+        },
+      ],
+    ]
+  }
+>
+  <View
+    accessibilityIgnoresInvertColors={true}
+    style={
+      Object {
+        "bottom": 0,
+        "justifyContent": "flex-start",
+        "left": 0,
+        "opacity": 0.1,
+        "position": "absolute",
+        "resizeMode": "cover",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "process": [Function],
+        }
+      }
+      style={
+        Array [
+          Object {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          Object {
+            "height": undefined,
+            "width": undefined,
+          },
+          undefined,
+        ]
+      }
+    />
+  </View>
+  <RNCSafeAreaView>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "paddingHorizontal": 10,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "fontFamily": "PT Sans",
+              "fontSize": 15,
+            },
+            Object {
+              "fontFamily": "PT Sans Narrow",
+              "fontSize": 20,
+            },
+            Object {},
+          ]
+        }
+      >
+        0:00
+      </Text>
+      <View
+        style={
+          Object {
+            "transform": Array [
+              Object {
+                "rotate": "1deg",
+              },
+            ],
+          }
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Array [
+              Object {
+                "color": "white",
+                "fontSize": 20,
+              },
+              Object {
+                "marginHorizontal": 10,
+              },
+              Object {
+                "fontFamily": "Feather",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+          testID="WeatherDetails.refresh"
+        >
+          
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "paddingHorizontal": 10,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "fontFamily": "PT Sans",
+              "fontSize": 15,
+            },
+            Object {
+              "fontFamily": "PT Sans Narrow",
+              "fontSize": 50,
+              "letterSpacing": 10,
+              "marginLeft": -5,
+              "textTransform": "uppercase",
+            },
+            Object {},
+          ]
+        }
+      >
+        Kharkiv
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "white",
+              "fontFamily": "PT Sans",
+              "fontSize": 15,
+            },
+            Object {
+              "fontFamily": "PT Sans Narrow",
+              "fontSize": 25,
+              "letterSpacing": 5,
+              "marginLeft": -2,
+              "textTransform": "uppercase",
+            },
+            Object {},
+          ]
+        }
+      >
+        Friday, November, 27
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "borderBottomColor": "gray",
+          "borderBottomWidth": 1,
+          "flexDirection": "row",
+          "marginTop": 50,
+          "paddingBottom": 50,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "flex": 2,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          allowFontScaling={false}
+          style={
+            Array [
+              Object {
+                "color": "white",
+                "fontSize": 80,
+              },
+              Object {
+                "marginHorizontal": 10,
+              },
+              Object {
+                "fontFamily": "Feather",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+        >
+          
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "flex": 3,
+            "flexDirection": "column",
+          }
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+              },
+              undefined,
+            ]
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "white",
+                  "fontFamily": "PT Sans",
+                  "fontSize": 15,
+                },
+                Array [
+                  Object {
+                    "fontFamily": "PT Sans Narrow",
+                  },
+                  Object {
+                    "fontSize": 60,
+                  },
+                ],
+                Object {},
+              ]
+            }
+          >
+            5
+          </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "white",
+                  "fontFamily": "PT Sans",
+                  "fontSize": 15,
+                },
+                Array [
+                  Object {
+                    "fontSize": 36,
+                    "lineHeight": 43.199999999999996,
+                  },
+                  Object {
+                    "fontFamily": "PT Sans Narrow",
+                  },
+                ],
+                Object {},
+              ]
+            }
+          >
+            o
+          </Text>
+        </View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "white",
+                "fontFamily": "PT Sans",
+                "fontSize": 15,
+              },
+              Object {
+                "fontFamily": "PT Sans Narrow",
+                "fontSize": 13,
+                "marginLeft": 10,
+                "textTransform": "uppercase",
+              },
+              Object {},
+            ]
+          }
+        >
+          // 
+          overcast clouds
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flex": 1,
+            "justifyContent": "flex-end",
+          }
+        }
+      >
+        <Text
+          allowFontScaling={false}
+          style={
+            Array [
+              Object {
+                "color": "white",
+                "fontSize": 30,
+              },
+              undefined,
+              Object {
+                "fontFamily": "Feather",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+        >
+          
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "white",
+                "fontFamily": "PT Sans",
+                "fontSize": 15,
+              },
+              Object {
+                "fontFamily": "PT Sans Narrow",
+                "fontSize": 20,
+                "marginTop": 10,
+              },
+              Object {},
+            ]
+          }
+        >
+          15:39
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "height": 120,
+        }
+      }
+    >
+      <RCTScrollView
+        horizontal={true}
+      >
+        <View>
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "padding": 10,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "white",
+                    "fontFamily": "PT Sans",
+                    "fontSize": 15,
+                  },
+                  Object {
+                    "fontSize": 12,
+                  },
+                  Object {},
+                ]
+              }
+            >
+              23:00
+            </Text>
+            <Text
+              allowFontScaling={false}
+              style={
+                Array [
+                  Object {
+                    "color": "white",
+                    "fontSize": 30,
+                  },
+                  Object {
+                    "marginHorizontal": 20,
+                    "marginVertical": 10,
+                  },
+                  Object {
+                    "fontFamily": "Feather",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              
+            </Text>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "white",
+                      "fontFamily": "PT Sans",
+                      "fontSize": 15,
+                    },
+                    Array [
+                      undefined,
+                      Object {
+                        "fontSize": 25,
+                      },
+                    ],
+                    Object {},
+                  ]
+                }
+              >
+                5
+              </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "white",
+                      "fontFamily": "PT Sans",
+                      "fontSize": 15,
+                    },
+                    Array [
+                      Object {
+                        "fontSize": 15,
+                        "lineHeight": 18,
+                      },
+                      undefined,
+                    ],
+                    Object {},
+                  ]
+                }
+              >
+                o
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "padding": 10,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "white",
+                    "fontFamily": "PT Sans",
+                    "fontSize": 15,
+                  },
+                  Object {
+                    "fontSize": 12,
+                  },
+                  Object {},
+                ]
+              }
+            >
+              2:00
+            </Text>
+            <Text
+              allowFontScaling={false}
+              style={
+                Array [
+                  Object {
+                    "color": "white",
+                    "fontSize": 30,
+                  },
+                  Object {
+                    "marginHorizontal": 20,
+                    "marginVertical": 10,
+                  },
+                  Object {
+                    "fontFamily": "Feather",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              
+            </Text>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "white",
+                      "fontFamily": "PT Sans",
+                      "fontSize": 15,
+                    },
+                    Array [
+                      undefined,
+                      Object {
+                        "fontSize": 25,
+                      },
+                    ],
+                    Object {},
+                  ]
+                }
+              >
+                3
+              </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "white",
+                      "fontFamily": "PT Sans",
+                      "fontSize": 15,
+                    },
+                    Array [
+                      Object {
+                        "fontSize": 15,
+                        "lineHeight": 18,
+                      },
+                      undefined,
+                    ],
+                    Object {},
+                  ]
+                }
+              >
+                o
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "padding": 10,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "white",
+                    "fontFamily": "PT Sans",
+                    "fontSize": 15,
+                  },
+                  Object {
+                    "fontSize": 12,
+                  },
+                  Object {},
+                ]
+              }
+            >
+              5:00
+            </Text>
+            <Text
+              allowFontScaling={false}
+              style={
+                Array [
+                  Object {
+                    "color": "white",
+                    "fontSize": 30,
+                  },
+                  Object {
+                    "marginHorizontal": 20,
+                    "marginVertical": 10,
+                  },
+                  Object {
+                    "fontFamily": "Feather",
+                    "fontStyle": "normal",
+                    "fontWeight": "normal",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              
+            </Text>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                  },
+                  undefined,
+                ]
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "white",
+                      "fontFamily": "PT Sans",
+                      "fontSize": 15,
+                    },
+                    Array [
+                      undefined,
+                      Object {
+                        "fontSize": 25,
+                      },
+                    ],
+                    Object {},
+                  ]
+                }
+              >
+                3
+              </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "white",
+                      "fontFamily": "PT Sans",
+                      "fontSize": 15,
+                    },
+                    Array [
+                      Object {
+                        "fontSize": 15,
+                        "lineHeight": 18,
+                      },
+                      undefined,
+                    ],
+                    Object {},
+                  ]
+                }
+              >
+                o
+              </Text>
+            </View>
+          </View>
+        </View>
+      </RCTScrollView>
+    </View>
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "padding": 10,
+          }
+        }
+      >
+        <Text
+          allowFontScaling={false}
+          style={
+            Array [
+              Object {
+                "color": "white",
+                "fontSize": 30,
+              },
+              Object {
+                "marginHorizontal": 20,
+                "marginVertical": 10,
+              },
+              Object {
+                "fontFamily": "Feather",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+        >
+          
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "white",
+                "fontFamily": "PT Sans",
+                "fontSize": 15,
+              },
+              undefined,
+              Object {
+                "fontSize": 25,
+              },
+            ]
+          }
+        >
+          88
+          %
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "padding": 10,
+          }
+        }
+      >
+        <Text
+          allowFontScaling={false}
+          style={
+            Array [
+              Object {
+                "color": "white",
+                "fontSize": 30,
+              },
+              Object {
+                "marginHorizontal": 20,
+                "marginVertical": 10,
+              },
+              Object {
+                "fontFamily": "Feather",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+        >
+          
+        </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "flexDirection": "row",
+              },
+              undefined,
+            ]
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "white",
+                  "fontFamily": "PT Sans",
+                  "fontSize": 15,
+                },
+                Array [
+                  undefined,
+                  Object {
+                    "fontSize": 25,
+                  },
+                ],
+                Object {},
+              ]
+            }
+          >
+            3.1
+          </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "white",
+                  "fontFamily": "PT Sans",
+                  "fontSize": 15,
+                },
+                Array [
+                  Object {
+                    "fontSize": 15,
+                    "lineHeight": 18,
+                  },
+                  undefined,
+                ],
+                Object {},
+              ]
+            }
+          >
+            m/c
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "padding": 10,
+          }
+        }
+      >
+        <Text
+          allowFontScaling={false}
+          style={
+            Array [
+              Object {
+                "color": "white",
+                "fontSize": 30,
+              },
+              Object {
+                "marginHorizontal": 20,
+                "marginVertical": 10,
+              },
+              Object {
+                "fontFamily": "Feather",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+        >
+          
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "white",
+                "fontFamily": "PT Sans",
+                "fontSize": 15,
+              },
+              undefined,
+              Object {
+                "fontSize": 25,
+              },
+            ]
+          }
+        >
+          7:06
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "padding": 10,
+          }
+        }
+      >
+        <Text
+          allowFontScaling={false}
+          style={
+            Array [
+              Object {
+                "color": "white",
+                "fontSize": 30,
+              },
+              Object {
+                "marginHorizontal": 20,
+                "marginVertical": 10,
+              },
+              Object {
+                "fontFamily": "Feather",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+        >
+          
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "white",
+                "fontFamily": "PT Sans",
+                "fontSize": 15,
+              },
+              undefined,
+              Object {
+                "fontSize": 25,
+              },
+            ]
+          }
+        >
+          15:39
+        </Text>
+      </View>
+    </View>
+  </RNCSafeAreaView>
+</View>
+`;
