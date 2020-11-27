@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextWithSuperscript should match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "flexDirection": "row",
+      },
+      undefined,
+    ]
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "white",
+          "fontFamily": "PT Sans",
+          "fontSize": 15,
+        },
+        Array [
+          undefined,
+          Object {
+            "fontSize": 10,
+          },
+        ],
+        Object {},
+      ]
+    }
+  >
+    2
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "white",
+          "fontFamily": "PT Sans",
+          "fontSize": 15,
+        },
+        Array [
+          Object {
+            "fontSize": 6,
+            "lineHeight": 7.199999999999999,
+          },
+          undefined,
+        ],
+        Object {},
+      ]
+    }
+  >
+    o
+  </Text>
+</View>
+`;

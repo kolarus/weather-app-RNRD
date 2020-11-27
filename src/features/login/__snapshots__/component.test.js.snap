@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login should match snapshot 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#080b24",
+      "height": "100%",
+      "justifyContent": "space-between",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "column",
+        "height": "60%",
+        "justifyContent": "flex-end",
+        "transform": Array [
+          Object {
+            "translateY": 0,
+          },
+        ],
+        "width": "100%",
+      }
+    }
+  >
+    <TextInput
+      allowFontScaling={true}
+      autoCapitalize="none"
+      onChangeText={[Function]}
+      placeholder="Login"
+      placeholderTextColor="white"
+      rejectResponderTermination={true}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "gray",
+            "borderRadius": 20,
+            "color": "white",
+            "fontFamily": "PT Sans Narrow",
+            "fontSize": 18,
+            "height": 50,
+            "marginBottom": 30,
+            "paddingLeft": 20,
+            "width": "90%",
+          },
+          undefined,
+        ]
+      }
+      underlineColorAndroid="transparent"
+      value=""
+    />
+    <TextInput
+      allowFontScaling={true}
+      autoCapitalize="none"
+      onChangeText={[Function]}
+      placeholder="Password"
+      placeholderTextColor="white"
+      rejectResponderTermination={true}
+      secureTextEntry={true}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "gray",
+            "borderRadius": 20,
+            "color": "white",
+            "fontFamily": "PT Sans Narrow",
+            "fontSize": 18,
+            "height": 50,
+            "marginBottom": 30,
+            "paddingLeft": 20,
+            "width": "90%",
+          },
+          undefined,
+        ]
+      }
+      underlineColorAndroid="transparent"
+      value=""
+    />
+  </View>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#ff4200",
+        "borderRadius": 20,
+        "height": 50,
+        "justifyContent": "center",
+        "marginVertical": 30,
+        "opacity": 1,
+        "width": "90%",
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "white",
+            "fontFamily": "PT Sans",
+            "fontSize": 15,
+          },
+          Object {
+            "fontSize": 30,
+          },
+          Object {},
+        ]
+      }
+    >
+      LOGIN
+    </Text>
+  </View>
+</View>
+`;
