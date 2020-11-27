@@ -7,6 +7,14 @@ jest.mock('react-native-keychain', () => {});
 
 jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper');
 
+jest.mock('@react-navigation/stack', () => ({
+  useHeaderHeight: () => 100,
+}));
+
+jest.mock('@react-navigation/core', () => ({
+  useRoute: () => ({}),
+}));
+
 jest.mock('react-native-reanimated', () => {
   const Reanimated = require('react-native-reanimated/mock');
 

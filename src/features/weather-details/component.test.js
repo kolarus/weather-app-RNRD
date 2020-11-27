@@ -3,9 +3,9 @@ import {fireEvent, render} from '@testing-library/react-native';
 import {Provider} from 'react-redux';
 import {applyMiddleware, createStore} from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import rootSaga from 'src/core/redux/sagas';
 
 import WeatherDetails from './component';
-import rootSaga from '../../core/redux/sagas';
 
 let store = createSagaMiddleware();
 
@@ -16,14 +16,6 @@ beforeEach(() => {
   jest.useFakeTimers();
   fetch.resetMocks();
 });
-
-jest.mock('@react-navigation/stack', () => ({
-  useHeaderHeight: () => 100,
-}));
-
-jest.mock('@react-navigation/core', () => ({
-  useRoute: () => ({}),
-}));
 
 const initialState = {
   weather: {
