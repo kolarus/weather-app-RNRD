@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommonText should match snapshot 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "color": "white",
+        "fontFamily": "PT Sans",
+        "fontSize": 15,
+      },
+      undefined,
+      Object {},
+    ]
+  }
+>
+  Test
+</Text>
+`;

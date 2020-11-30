@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FullscreenLoader should match snapshot 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "gray",
+      "bottom": 0,
+      "justifyContent": "flex-end",
+      "left": 0,
+      "opacity": 0,
+      "paddingBottom": "30%",
+      "position": "absolute",
+      "right": 0,
+      "top": 0,
+    }
+  }
+>
+  <ActivityIndicator
+    animating={true}
+    color="white"
+    hidesWhenStopped={true}
+    size="large"
+  />
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "white",
+          "fontFamily": "PT Sans",
+          "fontSize": 15,
+        },
+        undefined,
+        Object {},
+      ]
+    }
+  >
+    Test Descr
+  </Text>
+</View>
+`;
